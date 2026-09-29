@@ -1,0 +1,151 @@
+/* =========================================
+   FLOATING BUTTONS
+========================================= */
+
+.floating-buttons {
+  position: fixed;
+
+  right: 22px;
+  bottom: 28px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 10px;
+
+  z-index: 9999;
+}
+
+
+/* =========================================
+   COMMON BUTTON
+========================================= */
+
+.floating-btn {
+  width: 50px;
+  height: 50px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.14);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+/* =========================================
+   BACK TO TOP
+========================================= */
+
+.top-btn {
+  background: #ffffff;
+
+  color: #171717;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(10px);
+}
+
+.top-btn.show-top-btn {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+.top-btn:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================
+   WHATSAPP
+========================================= */
+
+.whatsapp-btn {
+  width: 58px;
+  height: 58px;
+
+  background: #e8aa3d;
+
+  color: #171717;
+
+  animation: whatsappFloat 3s ease-in-out infinite;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 14px 35px rgba(232, 170, 61, 0.35);
+}
+
+
+/* =========================================
+   WHATSAPP FLOAT ANIMATION
+========================================= */
+
+@keyframes whatsappFloat {
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .floating-buttons {
+    right: 15px;
+
+    bottom: 20px;
+
+    gap: 8px;
+  }
+
+  .floating-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .whatsapp-btn {
+    width: 53px;
+    height: 53px;
+  }
+
+}

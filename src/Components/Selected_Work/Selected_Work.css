@@ -1,0 +1,658 @@
+
+/* ==================================================
+   SELECTED WORK SECTION
+================================================== */
+
+.work-section {
+  width: 100%;
+
+  padding: 110px 0 120px;
+
+  background: #29263c;
+
+  color: #ffffff;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+.work-section *,
+.work-section *::before,
+.work-section *::after {
+  box-sizing: border-box;
+}
+
+/* ==================================================
+     CONTAINER
+  ================================================== */
+
+.work-container {
+  width: 88%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+/* ==================================================
+     TOP LABEL
+  ================================================== */
+
+.work-label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 25px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.work-visible .work-label {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.work-label span:nth-child(2) {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.work-label strong {
+  color: rgba(255, 255, 255, 0.7);
+
+  font-weight: 700;
+}
+
+/* ==================================================
+     HEADER
+  ================================================== */
+
+.work-header {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-bottom: 65px;
+}
+
+/* ==================================================
+     HEADING
+  ================================================== */
+
+.work-heading {
+  opacity: 0;
+
+  transform: translateY(55px);
+
+  transition: opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s;
+}
+
+.work-visible .work-heading {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.work-heading h2 {
+  margin: 0;
+
+  font-size: clamp(52px, 5.4vw, 70px);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 500;
+
+  color: #ffffff;
+}
+
+.work-heading h2 span {
+  color: #c6f13d;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-style: italic;
+
+  font-weight: 400;
+}
+
+/* ==================================================
+     START PROJECT BUTTON
+  ================================================== */
+
+.work-project-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding-bottom: 10px;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.13em;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+  opacity: 0;
+
+  transform: translateY(25px);
+
+  transition: opacity 0.8s ease 0.35s, transform 0.8s ease 0.35s,
+    color 0.3s ease, border-color 0.3s ease, gap 0.3s ease;
+}
+
+.work-visible .work-project-btn {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.work-project-btn:hover {
+  gap: 13px;
+
+  color: #c6f13d;
+
+  border-color: #c6f13d;
+}
+
+.work-project-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.work-project-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ==================================================
+     PROJECT GRID
+  ================================================== */
+
+.work-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 17px;
+
+  width: 100%;
+}
+
+/* ==================================================
+     WORK CARD
+  ================================================== */
+
+.work-card {
+  min-width: 0;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  background: #353149;
+
+  opacity: 0;
+
+  transform: translateY(70px);
+
+  transition: opacity 0.8s ease var(--card-delay),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--card-delay),
+    box-shadow 0.4s ease;
+}
+
+.work-visible .work-card {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* ==================================================
+     CARD HOVER
+  ================================================== */
+
+.work-card:hover {
+  transform: translateY(-10px);
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* ==================================================
+     WEBSITE PREVIEW
+  ================================================== */
+
+.work-preview {
+  position: relative;
+
+  height: 270px;
+
+  padding: 34px 25px 0;
+
+  overflow: hidden;
+}
+
+/* ==================================================
+     PREVIEW COLORS
+  ================================================== */
+
+.work-card.restaurant .work-preview {
+  background: #dcb265;
+}
+
+.work-card.healthcare .work-preview {
+  background: #91afbd;
+}
+
+.work-card.studio .work-preview {
+  background: #9ab89f;
+}
+
+/* ==================================================
+     BROWSER WINDOW
+  ================================================== */
+
+.browser-window {
+  position: relative;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: #f9f7f1;
+
+  border-radius: 9px 9px 0 0;
+
+  overflow: hidden;
+
+  transform: translateY(15px) scale(0.97);
+
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.work-visible .browser-window {
+  transform: translateY(0) scale(1);
+}
+
+.work-card:hover .browser-window {
+  transform: translateY(-6px) scale(1.015);
+}
+
+/* ==================================================
+     BROWSER HEADER
+  ================================================== */
+
+.browser-header {
+  height: 25px;
+
+  padding: 0 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: #faf9f4;
+
+  color: #252525;
+}
+
+.browser-name {
+  font-size: 7px;
+
+  font-weight: 600;
+}
+
+.browser-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 5.5px;
+
+  color: #444444;
+}
+
+/* ==================================================
+     PREVIEW CONTENT
+  ================================================== */
+
+.preview-content {
+  height: calc(100% - 25px);
+
+  padding: 42px 18px;
+
+  background: #f4eedc;
+
+  transition: transform 0.5s ease;
+}
+
+/* Restaurant */
+
+.restaurant .preview-content {
+  background: linear-gradient(135deg, #f5e8ca, #fffaf0);
+}
+
+/* Healthcare */
+
+.healthcare .preview-content {
+  background: linear-gradient(135deg, #e5f1f4, #f5fbfc);
+}
+
+/* Studio */
+
+.studio .preview-content {
+  background: linear-gradient(135deg, #e3f0e3, #f5fbf5);
+}
+
+/* ==================================================
+     PREVIEW CATEGORY
+  ================================================== */
+
+.preview-category {
+  margin-bottom: 13px;
+
+  font-size: 6px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+
+  color: #7761d9;
+}
+
+/* ==================================================
+     PREVIEW TITLE
+  ================================================== */
+
+.preview-content h3 {
+  max-width: 150px;
+
+  margin: 0;
+
+  font-size: 23px;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.05em;
+
+  font-weight: 500;
+
+  color: #171717;
+}
+
+/* ==================================================
+     PREVIEW LINE
+  ================================================== */
+
+.preview-line {
+  width: 44px;
+
+  height: 10px;
+
+  margin-top: 15px;
+
+  border-radius: 20px;
+
+  background: #171717;
+
+  transition: width 0.4s ease;
+}
+
+.work-card:hover .preview-line {
+  width: 65px;
+}
+
+/* ==================================================
+     WORK INFORMATION
+  ================================================== */
+
+.work-info {
+  min-height: 140px;
+
+  padding: 28px 20px 22px;
+
+  background: #353149;
+}
+
+/* ==================================================
+     INFO TOP
+  ================================================== */
+
+.work-info-top {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+/* ==================================================
+     WORK TYPE
+  ================================================== */
+
+.work-type {
+  display: block;
+
+  margin-bottom: 13px;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ==================================================
+     WORK TITLE
+  ================================================== */
+
+.work-info h3 {
+  margin: 0;
+
+  font-size: 18px;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.03em;
+
+  font-weight: 500;
+
+  color: #ffffff;
+}
+
+/* ==================================================
+     ARROW BUTTON
+  ================================================== */
+
+.work-arrow {
+  flex-shrink: 0;
+
+  width: 36px;
+
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.work-arrow:hover {
+  background: #c6f13d;
+
+  border-color: #c6f13d;
+
+  color: #29263c;
+
+  transform: rotate(45deg);
+}
+
+/* ==================================================
+     DESCRIPTION
+  ================================================== */
+
+.work-info p {
+  max-width: 330px;
+
+  margin: 17px 0 0;
+
+  font-size: 10px;
+
+  line-height: 1.65;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ==================================================
+     TABLET
+  ================================================== */
+
+@media (max-width: 1000px) {
+  .work-section {
+    padding: 90px 0 100px;
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .work-card:last-child {
+    grid-column: 1 / -1;
+
+    max-width: calc(50% - 8px);
+  }
+}
+
+/* ==================================================
+     MOBILE
+  ================================================== */
+
+@media (max-width: 650px) {
+  .work-section {
+    padding: 80px 0 90px;
+  }
+
+  .work-container {
+    width: 88%;
+  }
+
+  /* Header */
+
+  .work-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 30px;
+
+    margin-bottom: 50px;
+  }
+
+  /* Heading */
+
+  .work-heading h2 {
+    font-size: 45px;
+
+    line-height: 0.96;
+  }
+
+  /* Grid */
+
+  .work-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .work-card:last-child {
+    grid-column: auto;
+
+    max-width: none;
+  }
+
+  /* Preview */
+
+  .work-preview {
+    height: 250px;
+
+    padding: 30px 22px 0;
+  }
+
+  /* Info */
+
+  .work-info {
+    min-height: 145px;
+
+    padding: 25px 18px 20px;
+  }
+
+  /* Title */
+
+  .work-info h3 {
+    font-size: 18px;
+  }
+}
+
+/* ==================================================
+     SMALL MOBILE
+  ================================================== */
+
+@media (max-width: 400px) {
+  .work-heading h2 {
+    font-size: 40px;
+  }
+
+  .work-preview {
+    height: 230px;
+
+    padding: 25px 18px 0;
+  }
+}

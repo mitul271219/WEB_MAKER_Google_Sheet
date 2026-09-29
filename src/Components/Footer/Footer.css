@@ -1,0 +1,521 @@
+
+/* ==================================================
+   FOOTER SECTION
+================================================== */
+
+.footer-section {
+  position: relative;
+
+  width: 100%;
+
+  padding: 48px 0 22px;
+
+  background: #1d1b28;
+
+  color: #ffffff;
+
+  overflow: hidden;
+}
+
+/* ==================================================
+     CONTAINER
+  ================================================== */
+
+.footer-container {
+  width: 88%;
+
+  max-width: 1110px;
+
+  margin: 0 auto;
+}
+
+/* ==================================================
+     TOP FOOTER
+  ================================================== */
+
+.footer-top {
+  display: grid;
+
+  grid-template-columns: 1.4fr 1.8fr auto;
+
+  align-items: start;
+
+  gap: 60px;
+}
+
+/* ==================================================
+     BRAND
+  ================================================== */
+
+.footer-brand {
+  opacity: 0;
+
+  transform: translateY(30px);
+
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.footer-visible .footer-brand {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* ==================================================
+     LOGO
+  ================================================== */
+
+.footer-logo {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  text-decoration: none;
+
+  color: #ffffff;
+}
+
+.footer-logo-box {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 27px;
+
+  height: 27px;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #7255df;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+.footer-logo-text {
+  font-size: 15px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+/* ==================================================
+     TAGLINE
+  ================================================== */
+
+.footer-tagline {
+  margin: 7px 0 0;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  color: #858198;
+}
+
+/* ==================================================
+     NAVIGATION
+  ================================================== */
+
+.footer-navigation {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 55px;
+
+  padding-top: 3px;
+
+  opacity: 0;
+
+  transform: translateY(30px);
+
+  transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s;
+}
+
+.footer-visible .footer-navigation {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* ==================================================
+     NAV COLUMN
+  ================================================== */
+
+.footer-nav-column {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* ==================================================
+     NAV LINKS
+  ================================================== */
+
+.footer-nav-column a {
+  position: relative;
+
+  width: fit-content;
+
+  color: #ddd9e9;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  font-weight: 400;
+
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-nav-column a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  bottom: -5px;
+
+  width: 0;
+
+  height: 1px;
+
+  background: #8b70ff;
+
+  transition: width 0.3s ease;
+}
+
+.footer-nav-column a:hover {
+  color: #ffffff;
+
+  transform: translateX(3px);
+}
+
+.footer-nav-column a:hover::after {
+  width: 100%;
+}
+
+/* ==================================================
+     SOCIAL ICONS
+  ================================================== */
+
+.footer-socials {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  opacity: 0;
+
+  transform: translateY(30px) scale(0.9);
+
+  transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+}
+
+.footer-visible .footer-socials {
+  opacity: 1;
+
+  transform: translateY(0) scale(1);
+}
+
+/* ==================================================
+     SOCIAL BUTTON
+  ================================================== */
+
+.footer-social-btn {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 32px;
+
+  height: 32px;
+
+  border: 1px solid #4b485a;
+
+  border-radius: 50%;
+
+  color: #c8c3d7;
+
+  text-decoration: none;
+
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-social-btn:hover {
+  background: #7255df;
+
+  border-color: #7255df;
+
+  color: #ffffff;
+
+  transform: translateY(-4px) rotate(5deg);
+}
+
+/* ==================================================
+     DIVIDER
+  ================================================== */
+
+.footer-divider {
+  width: 100%;
+
+  height: 1px;
+
+  margin-top: 42px;
+
+  background: #383543;
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition: transform 1s ease 0.45s;
+}
+
+.footer-visible .footer-divider {
+  transform: scaleX(1);
+}
+
+/* ==================================================
+     BOTTOM FOOTER
+  ================================================== */
+
+.footer-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-top: 20px;
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition: opacity 0.8s ease 0.55s, transform 0.8s ease 0.55s;
+}
+
+.footer-visible .footer-bottom {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* ==================================================
+     COPYRIGHT
+  ================================================== */
+
+.footer-copyright {
+  margin: 0;
+
+  font-size: 9px;
+
+  color: #77738a;
+
+  letter-spacing: 0.02em;
+}
+
+/* ==================================================
+     BUILT WITH INTENTION
+  ================================================== */
+
+.footer-intention {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #77738a;
+
+  text-decoration: none;
+
+  font-size: 9px;
+
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.footer-intention:hover {
+  color: #ffffff;
+
+  gap: 10px;
+}
+
+.footer-intention svg {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-intention:hover svg {
+  color: #8b70ff;
+
+  transform: rotate(20deg) scale(1.15);
+}
+
+/* ==================================================
+     BACKGROUND GLOW
+  ================================================== */
+
+.footer-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 400px;
+
+  height: 250px;
+
+  left: 50%;
+
+  top: 0;
+
+  transform: translateX(-50%);
+
+  background: radial-gradient(
+    circle,
+    rgba(114, 85, 223, 0.08) 0%,
+    rgba(114, 85, 223, 0) 70%
+  );
+
+  pointer-events: none;
+}
+
+/* ==================================================
+     TABLET
+  ================================================== */
+
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr 1.5fr;
+
+    gap: 45px;
+  }
+
+  .footer-socials {
+    grid-column: 2;
+
+    margin-top: -25px;
+
+    justify-content: flex-end;
+  }
+
+  .footer-navigation {
+    gap: 35px;
+  }
+}
+
+/* ==================================================
+     MOBILE
+  ================================================== */
+
+@media (max-width: 650px) {
+  .footer-section {
+    padding: 55px 0 25px;
+  }
+
+  .footer-container {
+    width: 88%;
+  }
+
+  .footer-top {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 35px;
+  }
+
+  /* Brand */
+
+  .footer-brand {
+    width: 100%;
+  }
+
+  /* Navigation */
+
+  .footer-navigation {
+    width: 100%;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    padding-top: 0;
+  }
+
+  .footer-nav-column {
+    gap: 18px;
+  }
+
+  .footer-nav-column a {
+    font-size: 11px;
+  }
+
+  /* Social */
+
+  .footer-socials {
+    margin: 0;
+
+    justify-content: flex-start;
+
+    grid-column: auto;
+  }
+
+  /* Divider */
+
+  .footer-divider {
+    margin-top: 35px;
+  }
+
+  /* Bottom */
+
+  .footer-bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .footer-intention {
+    font-size: 9px;
+  }
+}
+
+/* ==================================================
+     SMALL MOBILE
+  ================================================== */
+
+@media (max-width: 400px) {
+  .footer-navigation {
+    grid-template-columns: repeat(2, 1fr);
+
+    row-gap: 25px;
+  }
+
+  .footer-logo-text {
+    font-size: 14px;
+  }
+
+  .footer-tagline {
+    font-size: 10px;
+  }
+}

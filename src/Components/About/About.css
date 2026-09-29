@@ -1,0 +1,695 @@
+
+/* =========================================
+   ABOUT SECTION
+========================================= */
+
+.about-section {
+  position: relative;
+  width: 100%;
+  padding: 95px 0 110px;
+
+  background: rgb(190, 197, 157);
+  color: #171717;
+
+  overflow: hidden;
+}
+
+/* =========================================
+     CONTAINER
+  ========================================= */
+
+.about-container {
+  width: min(1110px, 88%);
+  margin: 0 auto;
+}
+
+/* =========================================
+     TOP LABEL
+  ========================================= */
+
+.about-top-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 35px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: #1d1d1d;
+
+  opacity: 0;
+  transform: translateY(15px);
+
+  transition: all 0.7s ease;
+}
+
+.about-visible .about-top-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-top-label span:nth-child(2) {
+  color: #8c8c8c;
+}
+
+.about-top-label strong {
+  font-weight: 700;
+}
+
+/* =========================================
+     INTRO SECTION
+  ========================================= */
+
+.about-intro {
+  display: grid;
+
+  grid-template-columns: 1.08fr 0.92fr;
+
+  gap: 65px;
+
+  align-items: start;
+}
+
+/* =========================================
+     HEADING
+  ========================================= */
+
+.about-heading-box {
+  opacity: 0;
+  transform: translateY(45px);
+
+  transition: all 0.9s ease 0.1s;
+}
+
+.about-visible .about-heading-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-heading-box h2 {
+  margin: 0;
+
+  font-size: clamp(50px, 5.2vw, 68px);
+
+  line-height: 0.94;
+
+  font-weight: 500;
+
+  letter-spacing: -0.055em;
+}
+
+.about-heading-box h2 span {
+  color: #7255df;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-style: italic;
+
+  font-weight: 400;
+}
+
+/* =========================================
+     RIGHT TEXT
+  ========================================= */
+
+.about-text-box {
+  padding-top: 2px;
+
+  opacity: 0;
+  transform: translateY(35px);
+
+  transition: all 0.9s ease 0.25s;
+}
+
+.about-visible .about-text-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-main-text {
+  margin: 0 0 8px;
+
+  font-size: 15px;
+
+  line-height: 1.65;
+
+  color: #202020;
+}
+
+.about-sub-text {
+  margin: 0;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+
+  color: #777777;
+}
+
+/* =========================================
+     GET TO KNOW US BUTTON
+  ========================================= */
+
+.about-know-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 21px;
+
+  padding-bottom: 7px;
+
+  color: #151515;
+
+  text-decoration: none;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+
+  border-bottom: 1px solid #222;
+
+  transition: gap 0.3s ease, color 0.3s ease;
+}
+
+.about-know-btn:hover {
+  gap: 16px;
+
+  color: #7255df;
+}
+
+/* =========================================
+     BOTTOM SECTION
+  ========================================= */
+
+.about-bottom {
+  display: grid;
+
+  grid-template-columns: 1.04fr 0.96fr;
+
+  gap: 45px;
+
+  margin-top: 80px;
+
+  opacity: 0;
+
+  transform: translateY(50px);
+
+  transition: all 1s ease 0.35s;
+}
+
+.about-visible .about-bottom {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================================
+     LEFT VISUAL
+  ========================================= */
+
+.about-visual {
+  position: relative;
+
+  height: 310px;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  background: #29273c;
+}
+
+/* =========================================
+     GRID BACKGROUND
+  ========================================= */
+
+.visual-grid {
+  position: absolute;
+
+  inset: 0;
+
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.12) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+
+  background-size: 32px 32px;
+
+  opacity: 0.7;
+}
+
+/* =========================================
+     WEBSITE PREVIEW CARD
+  ========================================= */
+
+.website-preview-card {
+  position: absolute;
+
+  width: 73%;
+
+  height: 185px;
+
+  top: 55px;
+
+  left: 12%;
+
+  padding: 20px;
+
+  border-radius: 8px;
+
+  background: #8170d0;
+
+  box-shadow: 15px 18px 0 rgba(0, 0, 0, 0.16), 0 20px 35px rgba(0, 0, 0, 0.15);
+
+  transform: rotate(-6deg);
+
+  animation: floatingWebsite 5s ease-in-out infinite;
+}
+
+@keyframes floatingWebsite {
+  0%,
+  100% {
+    transform: rotate(-6deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-6deg) translateY(-8px);
+  }
+}
+
+/* =========================================
+     PREVIEW TOP
+  ========================================= */
+
+.preview-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: #ffffff;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+.preview-top small {
+  font-size: 7px;
+}
+
+/* =========================================
+     PREVIEW HEADING
+  ========================================= */
+
+.preview-heading {
+  width: 88%;
+
+  height: 13px;
+
+  margin-top: 34px;
+
+  border-radius: 20px;
+
+  background: #ffffff;
+}
+
+/* =========================================
+     PREVIEW LINES
+  ========================================= */
+
+.preview-lines {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-top: 13px;
+}
+
+.preview-lines span {
+  display: block;
+
+  width: 58%;
+
+  height: 6px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.preview-lines span:nth-child(2) {
+  width: 48%;
+}
+
+.preview-lines span:nth-child(3) {
+  width: 38%;
+}
+
+/* =========================================
+     PREVIEW BUTTON
+  ========================================= */
+
+.preview-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 18px;
+
+  padding: 8px 11px;
+
+  border-radius: 20px;
+
+  background: #baff3c;
+
+  color: #202020;
+
+  font-size: 6px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+}
+
+/* =========================================
+     VISUAL GROWTH TEXT
+  ========================================= */
+
+.visual-growth {
+  position: absolute;
+
+  right: 28px;
+
+  bottom: 25px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  color: #ffffff;
+
+  font-size: 9px;
+
+  letter-spacing: 0.16em;
+
+  z-index: 2;
+}
+
+.visual-growth strong {
+  font-size: 10px;
+
+  font-weight: 500;
+}
+
+/* =========================================
+     FEATURE GRID
+  ========================================= */
+
+.about-features {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  border-top: 1px solid #ddddda;
+
+  border-left: 1px solid #ddddda;
+}
+
+/* =========================================
+     FEATURE CARD
+  ========================================= */
+
+.about-feature-card {
+  position: relative;
+
+  min-height: 154px;
+
+  /* MAIN CENTERING */
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 35px;
+
+  border-right: 1px solid #ddddda;
+
+  border-bottom: 1px solid #ddddda;
+
+  background: transparent;
+
+  transition: background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* =========================================
+     FEATURE CARD HOVER
+  ========================================= */
+
+.about-feature-card:hover {
+  background: #ffffff;
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================
+     FEATURE NUMBER
+  ========================================= */
+
+.feature-number {
+  position: absolute;
+
+  top: 20px;
+
+  left: 18px;
+
+  font-size: 9px;
+
+  font-weight: 500;
+
+  color: #999999;
+}
+
+/* =========================================
+     FEATURE ICON
+  ========================================= */
+
+.feature-icon {
+  position: static;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 38px;
+
+  height: 38px;
+
+  color: #7658df;
+
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.about-feature-card:hover .feature-icon {
+  transform: translateY(-3px) scale(1.05);
+
+  color: #6041cf;
+}
+
+/* =========================================
+     FEATURE TITLE - CENTER
+  ========================================= */
+
+.about-feature-card h3 {
+  margin: 0;
+
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  letter-spacing: -0.01em;
+
+  color: #181818;
+}
+
+/* =========================================
+     TABLET
+  ========================================= */
+
+@media (max-width: 900px) {
+  .about-section {
+    padding: 80px 0 90px;
+  }
+
+  .about-intro {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+  .about-text-box {
+    max-width: 600px;
+  }
+
+  .about-bottom {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+  .about-visual {
+    height: 330px;
+  }
+}
+
+/* =========================================
+     MOBILE
+  ========================================= */
+
+@media (max-width: 600px) {
+  .about-section {
+    padding: 70px 0 80px;
+  }
+
+  .about-container {
+    width: 88%;
+  }
+
+  /* Top Label */
+
+  .about-top-label {
+    margin-bottom: 30px;
+
+    font-size: 9px;
+  }
+
+  /* Heading */
+
+  .about-heading-box h2 {
+    font-size: 45px;
+
+    line-height: 0.96;
+  }
+
+  /* Text */
+
+  .about-main-text {
+    font-size: 14px;
+  }
+
+  .about-sub-text {
+    font-size: 12px;
+  }
+
+  /* Bottom */
+
+  .about-bottom {
+    margin-top: 60px;
+
+    gap: 30px;
+  }
+
+  /* Visual */
+
+  .about-visual {
+    height: 260px;
+
+    border-radius: 12px;
+  }
+
+  /* Preview Card */
+
+  .website-preview-card {
+    width: 76%;
+
+    height: 150px;
+
+    top: 50px;
+
+    left: 10%;
+
+    padding: 16px;
+  }
+
+  .preview-heading {
+    margin-top: 25px;
+  }
+
+  .preview-button {
+    margin-top: 12px;
+  }
+
+  /* Feature Grid */
+
+  .about-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Feature Card */
+
+  .about-feature-card {
+    min-height: 130px;
+
+    padding: 30px 15px 20px;
+
+    gap: 9px;
+  }
+
+  /* Number */
+
+  .feature-number {
+    top: 15px;
+
+    left: 12px;
+
+    font-size: 8px;
+  }
+
+  /* Icon */
+
+  .feature-icon {
+    width: 30px;
+
+    height: 30px;
+  }
+
+  /* Title */
+
+  .about-feature-card h3 {
+    font-size: 11px;
+
+    text-align: center;
+  }
+}
