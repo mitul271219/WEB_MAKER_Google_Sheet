@@ -1,4 +1,3 @@
-
 /* =========================================
    ABOUT SECTION
 ========================================= */
@@ -6,42 +5,53 @@
 .about-section {
   position: relative;
   width: 100%;
-  padding: 95px 0 110px;
+
+  padding: 95px 0 0;
 
   background: rgb(190, 197, 157);
+
   color: #171717;
 
   overflow: hidden;
 }
 
 /* =========================================
-     CONTAINER
-  ========================================= */
+   CONTAINER
+========================================= */
 
 .about-container {
   width: min(1110px, 88%);
+
   margin: 0 auto;
+
+  padding-bottom: 110px;
 }
 
 /* =========================================
-     TOP LABEL
-  ========================================= */
+   TOP LABEL
+========================================= */
 
 .about-top-label {
   display: flex;
+
   align-items: center;
+
   gap: 8px;
 
   margin-bottom: 35px;
 
   font-size: 10px;
+
   font-weight: 700;
+
   letter-spacing: 0.16em;
+
   text-transform: uppercase;
 
   color: #1d1d1d;
 
   opacity: 0;
+
   transform: translateY(15px);
 
   transition: all 0.7s ease;
@@ -49,6 +59,7 @@
 
 .about-visible .about-top-label {
   opacity: 1;
+
   transform: translateY(0);
 }
 
@@ -61,8 +72,8 @@
 }
 
 /* =========================================
-     INTRO SECTION
-  ========================================= */
+   INTRO SECTION
+========================================= */
 
 .about-intro {
   display: grid;
@@ -75,11 +86,12 @@
 }
 
 /* =========================================
-     HEADING
-  ========================================= */
+   HEADING
+========================================= */
 
 .about-heading-box {
   opacity: 0;
+
   transform: translateY(45px);
 
   transition: all 0.9s ease 0.1s;
@@ -87,6 +99,7 @@
 
 .about-visible .about-heading-box {
   opacity: 1;
+
   transform: translateY(0);
 }
 
@@ -105,7 +118,7 @@
 .about-heading-box h2 span {
   color: #7255df;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Georgia, 'Times New Roman', serif;
 
   font-style: italic;
 
@@ -113,13 +126,14 @@
 }
 
 /* =========================================
-     RIGHT TEXT
-  ========================================= */
+   RIGHT TEXT
+========================================= */
 
 .about-text-box {
   padding-top: 2px;
 
   opacity: 0;
+
   transform: translateY(35px);
 
   transition: all 0.9s ease 0.25s;
@@ -127,6 +141,7 @@
 
 .about-visible .about-text-box {
   opacity: 1;
+
   transform: translateY(0);
 }
 
@@ -147,12 +162,12 @@
 
   line-height: 1.65;
 
-  color: #777777;
+  color: #666666;
 }
 
 /* =========================================
-     GET TO KNOW US BUTTON
-  ========================================= */
+   GET TO KNOW US BUTTON
+========================================= */
 
 .about-know-btn {
   display: inline-flex;
@@ -187,8 +202,8 @@
 }
 
 /* =========================================
-     BOTTOM SECTION
-  ========================================= */
+   BOTTOM SECTION
+========================================= */
 
 .about-bottom {
   display: grid;
@@ -213,8 +228,8 @@
 }
 
 /* =========================================
-     LEFT VISUAL
-  ========================================= */
+   LEFT VISUAL
+========================================= */
 
 .about-visual {
   position: relative;
@@ -229,8 +244,8 @@
 }
 
 /* =========================================
-     GRID BACKGROUND
-  ========================================= */
+   GRID BACKGROUND
+========================================= */
 
 .visual-grid {
   position: absolute;
@@ -249,8 +264,8 @@
 }
 
 /* =========================================
-     WEBSITE PREVIEW CARD
-  ========================================= */
+   WEBSITE PREVIEW CARD
+========================================= */
 
 .website-preview-card {
   position: absolute;
@@ -264,6 +279,8 @@
   left: 12%;
 
   padding: 20px;
+
+  box-sizing: border-box;
 
   border-radius: 8px;
 
@@ -288,8 +305,8 @@
 }
 
 /* =========================================
-     PREVIEW TOP
-  ========================================= */
+   PREVIEW TOP
+========================================= */
 
 .preview-top {
   display: flex;
@@ -312,8 +329,8 @@
 }
 
 /* =========================================
-     PREVIEW HEADING
-  ========================================= */
+   PREVIEW HEADING
+========================================= */
 
 .preview-heading {
   width: 88%;
@@ -328,8 +345,8 @@
 }
 
 /* =========================================
-     PREVIEW LINES
-  ========================================= */
+   PREVIEW LINES
+========================================= */
 
 .preview-lines {
   display: flex;
@@ -362,8 +379,8 @@
 }
 
 /* =========================================
-     PREVIEW BUTTON
-  ========================================= */
+   PREVIEW BUTTON
+========================================= */
 
 .preview-button {
   display: inline-flex;
@@ -390,8 +407,8 @@
 }
 
 /* =========================================
-     VISUAL GROWTH TEXT
-  ========================================= */
+   VISUAL GROWTH TEXT
+========================================= */
 
 .visual-growth {
   position: absolute;
@@ -420,29 +437,28 @@
 }
 
 /* =========================================
-     FEATURE GRID
-  ========================================= */
+   FEATURE GRID
+========================================= */
 
 .about-features {
   display: grid;
 
   grid-template-columns: repeat(2, 1fr);
 
-  border-top: 1px solid #ddddda;
+  border-top: 1px solid rgba(40, 40, 40, 0.12);
 
-  border-left: 1px solid #ddddda;
+  border-left: 1px solid rgba(40, 40, 40, 0.12);
 }
 
 /* =========================================
-     FEATURE CARD
-  ========================================= */
+   FEATURE CARD
+========================================= */
 
 .about-feature-card {
   position: relative;
 
   min-height: 154px;
 
-  /* MAIN CENTERING */
   display: flex;
 
   flex-direction: column;
@@ -455,9 +471,9 @@
 
   padding: 35px;
 
-  border-right: 1px solid #ddddda;
+  border-right: 1px solid rgba(40, 40, 40, 0.12);
 
-  border-bottom: 1px solid #ddddda;
+  border-bottom: 1px solid rgba(40, 40, 40, 0.12);
 
   background: transparent;
 
@@ -465,11 +481,11 @@
 }
 
 /* =========================================
-     FEATURE CARD HOVER
-  ========================================= */
+   FEATURE CARD HOVER
+========================================= */
 
 .about-feature-card:hover {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.8);
 
   transform: translateY(-3px);
 
@@ -477,8 +493,8 @@
 }
 
 /* =========================================
-     FEATURE NUMBER
-  ========================================= */
+   FEATURE NUMBER
+========================================= */
 
 .feature-number {
   position: absolute;
@@ -491,12 +507,12 @@
 
   font-weight: 500;
 
-  color: #999999;
+  color: #777777;
 }
 
 /* =========================================
-     FEATURE ICON
-  ========================================= */
+   FEATURE ICON
+========================================= */
 
 .feature-icon {
   position: static;
@@ -523,8 +539,8 @@
 }
 
 /* =========================================
-     FEATURE TITLE - CENTER
-  ========================================= */
+   FEATURE TITLE
+========================================= */
 
 .about-feature-card h3 {
   margin: 0;
@@ -544,13 +560,606 @@
   color: #181818;
 }
 
+/* =====================================================
+   OUR MISSION
+===================================================== */
+
+.mission-section {
+  position: relative;
+
+  width: 100%;
+
+  padding: 110px 0;
+
+  background: #f7f7f4;
+
+  overflow: hidden;
+}
+
+.mission-container {
+  width: min(1110px, 88%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1.05fr 0.95fr;
+
+  gap: 90px;
+
+  align-items: center;
+}
+
 /* =========================================
-     TABLET
-  ========================================= */
+   MISSION TITLE
+========================================= */
+
+.mission-title-wrap {
+  margin-bottom: 33px;
+}
+
+.mission-small-label,
+.vision-small-label {
+  display: inline-block;
+
+  margin-bottom: 11px;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+
+  color: #777777;
+}
+
+.mission-title-wrap h2,
+.vision-title-wrap h2 {
+  margin: 0;
+
+  font-size: clamp(40px, 4vw, 57px);
+
+  line-height: 1;
+
+  font-weight: 500;
+
+  letter-spacing: -0.045em;
+
+  color: #171717;
+}
+
+.mission-title-wrap h2 {
+  color: #7255df;
+}
+
+.mission-title-line,
+.vision-title-line {
+  width: 75px;
+
+  height: 2px;
+
+  margin-top: 17px;
+
+  background: #7255df;
+}
+
+/* =========================================
+   MISSION TEXT
+========================================= */
+
+.mission-text-content {
+  max-width: 650px;
+}
+
+.mission-text-content p {
+  margin: 0 0 17px;
+
+  font-size: 14px;
+
+  line-height: 1.72;
+
+  color: #505050;
+}
+
+.mission-text-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   MISSION VISUAL
+========================================= */
+
+.mission-visual {
+  position: relative;
+
+  min-height: 420px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+/* Background circles */
+
+.mission-shape {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.mission-shape-one {
+  width: 330px;
+
+  height: 330px;
+
+  border: 1px solid rgba(114, 85, 223, 0.15);
+}
+
+.mission-shape-two {
+  width: 250px;
+
+  height: 250px;
+
+  border: 1px dashed rgba(114, 85, 223, 0.22);
+}
+
+.mission-shape-three {
+  width: 165px;
+
+  height: 165px;
+
+  background: rgba(186, 255, 60, 0.15);
+
+  filter: blur(1px);
+}
+
+/* Main mission card */
+
+.mission-main-card {
+  position: relative;
+
+  width: 230px;
+
+  height: 270px;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-radius: 28px;
+
+  background: #29273c;
+
+  box-shadow: 0 28px 60px rgba(36, 33, 58, 0.22);
+
+  z-index: 3;
+
+  transform: rotate(-4deg);
+
+  animation: missionCardFloat 5s ease-in-out infinite;
+}
+
+@keyframes missionCardFloat {
+  0%,
+  100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-4deg) translateY(-10px);
+  }
+}
+
+.mission-card-top {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  color: #ffffff;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+}
+
+.mission-card-top small {
+  font-size: 7px;
+
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.mission-target-wrap {
+  width: 130px;
+
+  height: 130px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #7255df;
+}
+
+.mission-target-inner {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #ffffff;
+}
+
+.mission-card-bottom {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  color: #ffffff;
+
+  font-size: 8px;
+
+  letter-spacing: 0.13em;
+}
+
+.mission-card-bottom strong {
+  font-size: 12px;
+}
+
+/* Mission floating stats */
+
+.mission-stat-card {
+  position: absolute;
+
+  min-width: 110px;
+
+  padding: 15px 17px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.11);
+
+  z-index: 4;
+}
+
+.mission-stat-card span {
+  font-size: 20px;
+
+  font-weight: 700;
+}
+
+.mission-stat-card small {
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.mission-stat-card-one {
+  top: 70px;
+
+  right: 10px;
+
+  background: #baff3c;
+
+  color: #202020;
+
+  transform: rotate(5deg);
+}
+
+.mission-stat-card-two {
+  bottom: 50px;
+
+  left: 5px;
+
+  background: #ffffff;
+
+  color: #29273c;
+
+  transform: rotate(-5deg);
+}
+
+/* =====================================================
+   OUR VISION
+===================================================== */
+
+.vision-section {
+  position: relative;
+
+  width: 100%;
+
+  padding: 110px 0;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+.vision-container {
+  width: min(1110px, 88%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 0.95fr 1.05fr;
+
+  gap: 95px;
+
+  align-items: center;
+}
+
+/* =========================================
+   VISION CONTENT
+========================================= */
+
+.vision-title-wrap {
+  margin-bottom: 33px;
+}
+
+.vision-title-wrap h2 {
+  color: #7255df;
+}
+
+.vision-title-line {
+  background: #baff3c;
+}
+
+.vision-text-content {
+  max-width: 650px;
+}
+
+.vision-text-content p {
+  margin: 0 0 17px;
+
+  font-size: 14px;
+
+  line-height: 1.72;
+
+  color: #505050;
+}
+
+.vision-text-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================
+   VISION VISUAL
+========================================= */
+
+.vision-visual {
+  position: relative;
+
+  min-height: 430px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  background: #29273c;
+}
+
+/* Vision background grid */
+
+.vision-bg-grid {
+  position: absolute;
+
+  inset: 0;
+
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.07) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+
+  background-size: 38px 38px;
+}
+
+/* Vision circles */
+
+.vision-circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.vision-circle-one {
+  width: 310px;
+
+  height: 310px;
+}
+
+.vision-circle-two {
+  width: 220px;
+
+  height: 220px;
+}
+
+/* Main vision card */
+
+.vision-main-card {
+  position: relative;
+
+  width: 210px;
+
+  height: 230px;
+
+  padding: 27px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border-radius: 32px;
+
+  background: #7255df;
+
+  color: #ffffff;
+
+  box-shadow: 0 30px 55px rgba(0, 0, 0, 0.25);
+
+  z-index: 3;
+
+  animation: visionCardFloat 5s ease-in-out infinite;
+}
+
+@keyframes visionCardFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(3deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.vision-eye-wrap {
+  width: 110px;
+
+  height: 110px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  border-radius: 50%;
+
+  background: #baff3c;
+
+  color: #252339;
+}
+
+.vision-main-small {
+  font-size: 8px;
+
+  letter-spacing: 0.14em;
+
+  opacity: 0.75;
+}
+
+.vision-main-title {
+  margin-top: 4px;
+
+  font-size: 12px;
+
+  letter-spacing: 0.08em;
+}
+
+/* Floating tags */
+
+.vision-floating-tag {
+  position: absolute;
+
+  padding: 13px 20px;
+
+  border-radius: 8px;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+
+  box-shadow: 0 14px 25px rgba(0, 0, 0, 0.17);
+
+  z-index: 4;
+}
+
+.vision-floating-tag-one {
+  top: 55px;
+
+  left: 35px;
+
+  background: #ffffff;
+
+  color: #29273c;
+
+  transform: rotate(-7deg);
+}
+
+.vision-floating-tag-two {
+  top: 95px;
+
+  right: 22px;
+
+  background: #baff3c;
+
+  color: #202020;
+
+  transform: rotate(7deg);
+}
+
+.vision-floating-tag-three {
+  right: 50px;
+
+  bottom: 45px;
+
+  background: #8170d0;
+
+  color: #ffffff;
+
+  transform: rotate(-5deg);
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media (max-width: 900px) {
   .about-section {
-    padding: 80px 0 90px;
+    padding-top: 80px;
+  }
+
+  .about-container {
+    padding-bottom: 90px;
   }
 
   .about-intro {
@@ -572,19 +1181,69 @@
   .about-visual {
     height: 330px;
   }
+
+  /* Mission */
+
+  .mission-section,
+  .vision-section {
+    padding: 90px 0;
+  }
+
+  .mission-container,
+  .vision-container {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .mission-content,
+  .vision-content {
+    max-width: 700px;
+
+    margin: 0 auto;
+  }
+
+  .mission-title-wrap,
+  .vision-title-wrap {
+    text-align: center;
+  }
+
+  .mission-title-line,
+  .vision-title-line {
+    margin-left: auto;
+
+    margin-right: auto;
+  }
+
+  .mission-visual,
+  .vision-visual {
+    width: 100%;
+
+    min-height: 380px;
+  }
+
+  .vision-content {
+    order: 1;
+  }
+
+  .vision-visual {
+    order: 2;
+  }
 }
 
-/* =========================================
-     MOBILE
-  ========================================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 600px) {
   .about-section {
-    padding: 70px 0 80px;
+    padding-top: 70px;
   }
 
   .about-container {
     width: 88%;
+
+    padding-bottom: 80px;
   }
 
   /* Top Label */
@@ -691,5 +1350,221 @@
     font-size: 11px;
 
     text-align: center;
+  }
+
+  /* =========================================
+     MISSION MOBILE
+  ========================================= */
+
+  .mission-section,
+  .vision-section {
+    padding: 72px 0;
+  }
+
+  .mission-container,
+  .vision-container {
+    width: 88%;
+
+    gap: 40px;
+  }
+
+  .mission-title-wrap,
+  .vision-title-wrap {
+    margin-bottom: 28px;
+  }
+
+  .mission-small-label,
+  .vision-small-label {
+    font-size: 8px;
+  }
+
+  .mission-title-wrap h2,
+  .vision-title-wrap h2 {
+    font-size: 39px;
+  }
+
+  .mission-text-content p,
+  .vision-text-content p {
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+  /* Mission Visual */
+
+  .mission-visual {
+    min-height: 330px;
+  }
+
+  .mission-shape-one {
+    width: 270px;
+
+    height: 270px;
+  }
+
+  .mission-shape-two {
+    width: 210px;
+
+    height: 210px;
+  }
+
+  .mission-shape-three {
+    width: 135px;
+
+    height: 135px;
+  }
+
+  .mission-main-card {
+    width: 185px;
+
+    height: 225px;
+
+    padding: 20px;
+
+    border-radius: 23px;
+  }
+
+  .mission-target-wrap {
+    width: 105px;
+
+    height: 105px;
+  }
+
+  .mission-target-inner svg {
+    width: 58px;
+
+    height: 58px;
+  }
+
+  .mission-stat-card {
+    min-width: 85px;
+
+    padding: 11px 12px;
+  }
+
+  .mission-stat-card span {
+    font-size: 15px;
+  }
+
+  .mission-stat-card small {
+    font-size: 6px;
+  }
+
+  .mission-stat-card-one {
+    top: 48px;
+
+    right: -5px;
+  }
+
+  .mission-stat-card-two {
+    bottom: 32px;
+
+    left: -5px;
+  }
+
+  /* Vision Visual */
+
+  .vision-visual {
+    min-height: 330px;
+
+    border-radius: 16px;
+  }
+
+  .vision-circle-one {
+    width: 260px;
+
+    height: 260px;
+  }
+
+  .vision-circle-two {
+    width: 190px;
+
+    height: 190px;
+  }
+
+  .vision-main-card {
+    width: 165px;
+
+    height: 190px;
+
+    border-radius: 25px;
+  }
+
+  .vision-eye-wrap {
+    width: 88px;
+
+    height: 88px;
+
+    margin-bottom: 14px;
+  }
+
+  .vision-eye-wrap svg {
+    width: 58px;
+
+    height: 58px;
+  }
+
+  .vision-main-title {
+    font-size: 10px;
+  }
+
+  .vision-floating-tag {
+    padding: 10px 13px;
+
+    font-size: 7px;
+  }
+
+  .vision-floating-tag-one {
+    top: 40px;
+
+    left: 12px;
+  }
+
+  .vision-floating-tag-two {
+    top: 65px;
+
+    right: 8px;
+  }
+
+  .vision-floating-tag-three {
+    right: 22px;
+
+    bottom: 38px;
+  }
+}
+
+/* =====================================================
+   EXTRA SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+  .about-heading-box h2 {
+    font-size: 39px;
+  }
+
+  .mission-title-wrap h2,
+  .vision-title-wrap h2 {
+    font-size: 34px;
+  }
+
+  .mission-text-content p,
+  .vision-text-content p {
+    font-size: 12.5px;
+  }
+
+  .mission-stat-card-one {
+    right: 0;
+  }
+
+  .mission-stat-card-two {
+    left: 0;
+  }
+
+  .vision-floating-tag-one {
+    left: 8px;
+  }
+
+  .vision-floating-tag-two {
+    right: 6px;
   }
 }
