@@ -1,185 +1,31 @@
-// import React, { useEffect, useRef, useState } from "react";
-// import {
-//   Code2,
-//   Search,
-//   MessageCircle,
-//   Wrench,
-//   ArrowUpRight,
-// } from "lucide-react";
-// import "./Services.css";
-
-// export const Services_Web = () => {
-//   const servicesRef = useRef(null);
-//   const [visible, setVisible] = useState(false);
-
-//   useEffect(() => {
-//     const observer = new IntersectionObserver(
-//       ([entry]) => {
-//         if (entry.isIntersecting) {
-//           setVisible(true);
-//         }
-//       },
-//       {
-//         threshold: 0.15,
-//       },
-//     );
-
-//     const currentSection = servicesRef.current;
-
-//     if (currentSection) {
-//       observer.observe(currentSection);
-//     }
-
-//     return () => {
-//       if (currentSection) {
-//         observer.unobserve(currentSection);
-//       }
-//     };
-//   }, []);
-
-//   const services = [
-//     {
-//       number: "01",
-//       icon: <Code2 size={23} strokeWidth={1.8} />,
-//       title: "Website Development",
-//       description:
-//         "Modern, responsive websites that turn visitors into customers.",
-//       tags: ["Landing pages", "Custom builds"],
-//     },
-//     {
-//       number: "02",
-//       icon: <Search size={23} strokeWidth={1.8} />,
-//       title: "Google Business Setup",
-//       description:
-//         "Get discovered locally with a polished, optimized Google presence.",
-//       tags: ["Profile setup", "Local SEO"],
-//     },
-//     {
-//       number: "03",
-//       icon: <MessageCircle size={23} strokeWidth={1.8} />,
-//       title: "WhatsApp Integration",
-//       description:
-//         "Make it effortless for customers to start a conversation with you.",
-//       tags: ["Chat buttons", "Pre-filled messages"],
-//     },
-//     {
-//       number: "04",
-//       icon: <Wrench size={23} strokeWidth={1.8} />,
-//       title: "Website Maintenance",
-//       description:
-//         "Reliable ongoing support to keep your digital presence performing.",
-//       tags: ["Content updates", "Technical support"],
-//     },
-//   ];
-
-//   return (
-//     <>
-//       <section
-//         className={`services-section ${visible ? "services-visible" : ""}`}
-//         id="services"
-//         ref={servicesRef}
-//       >
-//         <div className="services-container">
-//           {/* ================= TOP LABEL ================= */}
-
-//           <div className="services-label">
-//             <span>02</span>
-//             <span>/</span>
-//             <strong>WHAT WE DO</strong>
-//           </div>
-
-//           {/* ================= HEADING ================= */}
-
-//           <div className="services-header">
-//             <div className="services-heading">
-//               <h2>
-//                 Everything you need
-//                 <br />
-//                 <span>to grow online.</span>
-//               </h2>
-//             </div>
-
-//             <div className="services-intro">
-//               <p>
-//                 One thoughtful partner for the digital details that move your
-//                 business forward.
-//               </p>
-//             </div>
-//           </div>
-
-//           {/* ================= SERVICE CARDS ================= */}
-
-//           <div className="services-grid">
-//             {services.map((service, index) => (
-//               <div
-//                 className="service-card"
-//                 key={service.number}
-//                 style={{
-//                   transitionDelay: `${index * 100}ms`,
-//                 }}
-//               >
-//                 {/* Card Top */}
-
-//                 <div className="service-card-top">
-//                   <span className="service-number">{service.number}</span>
-
-//                   <div className="service-icon">{service.icon}</div>
-//                 </div>
-
-//                 {/* Card Content */}
-
-//                 <div className="service-card-content">
-//                   <h3>{service.title}</h3>
-
-//                   <p>{service.description}</p>
-
-//                   {/* Tags */}
-
-//                   <div className="service-tags">
-//                     {service.tags.map((tag) => (
-//                       <span key={tag}>{tag}</span>
-//                     ))}
-//                   </div>
-//                 </div>
-
-//                 {/* Learn More */}
-
-//                 <a href="#contact" className="service-learn-more">
-//                   <span>LEARN MORE</span>
-
-//                   <ArrowUpRight size={15} />
-//                 </a>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-//     </>
-//   );
-// };
-
-
-
 import React, { useEffect, useRef, useState } from "react";
 import {
   Code2,
   Search,
   MessageCircle,
   Wrench,
+  SearchCheck,
   Check,
   ArrowUpRight,
 } from "lucide-react";
+
 import "./Services.css";
 
 export const Services_Web = () => {
   const servicesRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
+  // Scroll animation
   useEffect(() => {
+    const currentSection = servicesRef.current;
+
+    if (!currentSection) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
+          observer.unobserve(entry.target);
         }
       },
       {
@@ -187,19 +33,14 @@ export const Services_Web = () => {
       }
     );
 
-    const currentSection = servicesRef.current;
-
-    if (currentSection) {
-      observer.observe(currentSection);
-    }
+    observer.observe(currentSection);
 
     return () => {
-      if (currentSection) {
-        observer.unobserve(currentSection);
-      }
+      observer.disconnect();
     };
   }, []);
 
+  // All five services
   const services = [
     {
       number: "01",
@@ -264,6 +105,24 @@ export const Services_Web = () => {
         "Website Monitoring",
       ],
     },
+
+    {
+      number: "05",
+      icon: <SearchCheck size={23} strokeWidth={1.8} />,
+      title: "Basic SEO",
+      description:
+        "Improve your website's search visibility and help local customers find your business online.",
+      features: [
+        "Page Title Optimization",
+        "Meta Description",
+        "H1/H2 Optimization",
+        "Image Alt Text",
+        "Clean URLs",
+        "Mobile SEO",
+        "Keyword Optimization",
+        "Sitemap & Robots.txt",
+      ],
+    },
   ];
 
   return (
@@ -308,7 +167,9 @@ export const Services_Web = () => {
               className="service-card"
               key={service.number}
               style={{
-                transitionDelay: `${index * 100}ms`,
+                transitionDelay: visible
+                  ? `${index * 100}ms`
+                  : "0ms",
               }}
             >
               {/* CARD TOP */}
@@ -335,24 +196,38 @@ export const Services_Web = () => {
                       className="service-feature"
                       key={feature}
                     >
-                      <Check
-                        size={15}
-                        strokeWidth={2}
-                      />
-
+                      <Check size={15} strokeWidth={2} />
                       <span>{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* LEARN MORE */}
+              {/* LEARN MORE: ALL CARDS GO TO CONTACT */}
               <a
                 href="#contact"
                 className="service-learn-more"
+                onClick={(event) => {
+                  const contactSection =
+                    document.getElementById("contact");
+
+                  if (contactSection) {
+                    event.preventDefault();
+
+                    contactSection.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+
+                    window.history.replaceState(
+                      null,
+                      "",
+                      "#contact"
+                    );
+                  }
+                }}
               >
                 <span>Learn More</span>
-
                 <ArrowUpRight size={15} />
               </a>
             </div>
