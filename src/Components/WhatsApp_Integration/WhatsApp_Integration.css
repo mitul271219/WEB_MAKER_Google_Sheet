@@ -1,0 +1,346 @@
+/* =========================================
+   WHATSAPP INTEGRATION PAGE
+========================================= */
+
+.wa-page {
+  --wa-red: #e10600;
+  --wa-red-soft: #fde8e7;
+  --wa-ink: #141414;
+  --wa-muted: #5f5f5f;
+  --wa-bg: #f1f1f1;
+
+  width: 100%;
+  background: #ffffff;
+  color: var(--wa-ink);
+  overflow-x: hidden;
+}
+
+.wa-page *,
+.wa-page *::before,
+.wa-page *::after {
+  box-sizing: border-box;
+}
+
+.wa-container {
+  width: 88%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.wa-red {
+  color: var(--wa-red);
+}
+
+.wa-page h1,
+.wa-page h2,
+.wa-page h3,
+.wa-page p {
+  margin: 0;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+/* Scroll animation: content animates every time it scrolls into view,
+   both when scrolling down and when scrolling back up.
+   JS adds .wa-in when visible and removes it when out of view. */
+.wa-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.8s cubic-bezier(0.22, 0.8, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.wa-reveal.wa-from-left {
+  transform: translateX(-70px);
+}
+
+.wa-reveal.wa-from-right {
+  transform: translateX(70px);
+}
+
+.wa-reveal.wa-zoom {
+  transform: translateY(40px) scale(0.9);
+}
+
+.wa-reveal.wa-in {
+  opacity: 1;
+  transform: none;
+  transition-delay: var(--wa-delay, 0ms);
+}
+
+/* BUTTON */
+
+.wa-btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: var(--wa-red);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.wa-btn:hover {
+  background: #b80500;
+  transform: translateY(-2px);
+}
+
+.wa-page a:focus-visible {
+  outline: 3px solid var(--wa-ink);
+  outline-offset: 3px;
+}
+
+/* HERO */
+
+.wa-hero {
+  padding: 90px 0 130px;
+  background: var(--wa-bg);
+  border-bottom-left-radius: 50% 90px;
+  border-bottom-right-radius: 50% 90px;
+}
+
+.wa-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 50px;
+  align-items: center;
+}
+
+.wa-hero-text h1 {
+  font-size: clamp(34px, 4.6vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.wa-hero-text p {
+  margin: 24px 0 32px;
+  max-width: 520px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--wa-muted);
+}
+
+.wa-hero-image img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* WHAT WE OFFER */
+
+.wa-offer {
+  padding: 90px 0 70px;
+}
+
+.wa-offer-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 60px;
+}
+
+.wa-small-label {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--wa-red);
+}
+
+.wa-offer-header h2 {
+  margin-bottom: 26px;
+  font-size: clamp(28px, 3.4vw, 42px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.wa-offer-header > p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--wa-muted);
+}
+
+.wa-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.wa-offer-card {
+  position: relative;
+  padding: 90px 28px 32px;
+  border: 1px solid #ececec;
+  border-radius: 18px;
+  background: #ffffff;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* pink half-circle at the top of each card */
+.wa-offer-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 150px;
+  height: 75px;
+  transform: translateX(-50%);
+  border-radius: 0 0 150px 150px;
+  background: var(--wa-red-soft);
+}
+
+.wa-offer-icon {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--wa-red);
+  display: flex;
+}
+
+.wa-offer-card h3 {
+  margin-bottom: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--wa-red);
+}
+
+.wa-offer-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--wa-muted);
+}
+
+/* BUILD A WEBSITE */
+
+.wa-build {
+  padding: 50px 0 110px;
+}
+
+.wa-build-header {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.wa-build-header h2 {
+  margin-bottom: 18px;
+  font-size: clamp(26px, 3vw, 36px);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.wa-build-header p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--wa-muted);
+}
+
+.wa-build-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.wa-build-card {
+  padding: 28px 24px 32px;
+  border-radius: 10px;
+  background: #000000;
+  color: #ffffff;
+}
+
+/* staggered heights like the reference design */
+.wa-build-card:nth-child(odd) {
+  margin-top: 36px;
+}
+
+.wa-build-icon {
+  display: flex;
+  margin-bottom: 16px;
+  color: var(--wa-red);
+}
+
+.wa-build-card h3 {
+  margin-bottom: 12px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.wa-build-card p {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #cfcfcf;
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .wa-build-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wa-build-card:nth-child(odd) {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .wa-hero {
+    padding: 60px 0 100px;
+    border-bottom-left-radius: 50% 50px;
+    border-bottom-right-radius: 50% 50px;
+  }
+
+  .wa-hero-grid,
+  .wa-offer-header {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .wa-offer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 560px) {
+  .wa-build-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wa-offer {
+    padding: 70px 0 50px;
+  }
+
+  .wa-build {
+    padding-bottom: 80px;
+  }
+}
+
+/* REDUCED MOTION: sirf fade, slide/zoom nahi */
+@media (prefers-reduced-motion: reduce) {
+  /* movement band, lekin halka fade-in chalta rahe */
+  .wa-reveal,
+  .wa-reveal.wa-from-left,
+  .wa-reveal.wa-from-right,
+  .wa-reveal.wa-zoom {
+    transform: none;
+    transition: opacity 0.6s ease;
+  }
+
+  .wa-btn {
+    transition: none;
+  }
+}
