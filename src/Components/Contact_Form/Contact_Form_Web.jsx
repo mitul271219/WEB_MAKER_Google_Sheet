@@ -342,8 +342,6 @@
 
 
 
-
-
 import React, { useEffect, useRef, useState } from "react";
 
 import {
@@ -353,14 +351,22 @@ import {
   ArrowUpRight,
   ChevronDown,
   LoaderCircle,
+  MapPin,
 } from "lucide-react";
 
 import "./Conatct_Form.css";
+import "./Contact_Map.css";
 
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 import { PostContactSheet } from "../../Reducx_Store/TesterSlice";
+import {
+  BUSINESS_ADDRESS,
+  BUSINESS_NAME,
+  mapEmbedUrl,
+  mapDirectionsUrl,
+} from "../../config/contact";
 
 export const Contact_Form_Web = () => {
   const contactRef = useRef(null);
@@ -448,10 +454,6 @@ export const Contact_Form_Web = () => {
     setIsSubmitting(true);
 
     try {
-      // ==================================================
-      // DISPATCH REDUX THUNK
-      // ==================================================
-
       const res = await dispatch(
         PostContactSheet({
           formData,
@@ -460,15 +462,7 @@ export const Contact_Form_Web = () => {
 
       console.log("Contact Submit Response:", res);
 
-      // ==================================================
-      // SUCCESS TOAST
-      // ==================================================
-
       toast.success("Submit successfully!");
-
-      // ==================================================
-      // RESET FORM
-      // ==================================================
 
       setFormData({
         name: "",
@@ -479,10 +473,6 @@ export const Contact_Form_Web = () => {
         message: "",
       });
     } catch (error) {
-      // ==================================================
-      // ERROR
-      // ==================================================
-
       console.error("Contact Submit Error:", error);
 
       toast.error(
@@ -491,10 +481,6 @@ export const Contact_Form_Web = () => {
           "Something went wrong. Please try again."
       );
     } finally {
-      // ==================================================
-      // STOP LOADING
-      // ==================================================
-
       setIsSubmitting(false);
     }
   };
@@ -547,9 +533,7 @@ export const Contact_Form_Web = () => {
             {/* Contact Details */}
 
             <div className="contact-details">
-              {/* ==================================================
-                  WHATSAPP
-              ================================================== */}
+              {/* WHATSAPP */}
 
               <a
                 href="https://wa.me/919999999999?text=Hello%20WEB_MAKER%2C%20I%20want%20to%20discuss%20a%20website%20for%20my%20business."
@@ -576,9 +560,7 @@ export const Contact_Form_Web = () => {
                 />
               </a>
 
-              {/* ==================================================
-                  EMAIL
-              ================================================== */}
+              {/* EMAIL */}
 
               <a
                 href="mailto:hello@webmaker.in"
@@ -603,9 +585,7 @@ export const Contact_Form_Web = () => {
                 />
               </a>
 
-              {/* ==================================================
-                  BUSINESS HOURS
-              ================================================== */}
+              {/* BUSINESS HOURS */}
 
               <div className="contact-detail contact-hours">
                 <div className="contact-detail-icon">
@@ -621,6 +601,33 @@ export const Contact_Form_Web = () => {
                   <span>Mon–Sat, 10am–7pm</span>
                 </div>
               </div>
+
+              {/* ADDRESS (opens Google Maps) */}
+
+              <a
+                href={mapDirectionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-detail"
+              >
+                <div className="contact-detail-icon">
+                  <MapPin
+                    size={20}
+                    strokeWidth={1.7}
+                  />
+                </div>
+
+                <div className="contact-detail-content">
+                  <small>VISIT US</small>
+
+                  <span>{BUSINESS_ADDRESS}</span>
+                </div>
+
+                <ArrowUpRight
+                  className="contact-detail-arrow"
+                  size={16}
+                />
+              </a>
             </div>
           </div>
 
@@ -633,13 +640,9 @@ export const Contact_Form_Web = () => {
               className="contact-form"
               onSubmit={handleSubmit}
             >
-              {/* ==================================================
-                  ROW 1
-              ================================================== */}
+              {/* ROW 1 */}
 
               <div className="contact-form-row">
-                {/* Name */}
-
                 <div className="contact-field">
                   <label htmlFor="name">
                     NAME
@@ -656,8 +659,6 @@ export const Contact_Form_Web = () => {
                     disabled={isSubmitting}
                   />
                 </div>
-
-                {/* Business Name */}
 
                 <div className="contact-field">
                   <label htmlFor="businessName">
@@ -677,13 +678,9 @@ export const Contact_Form_Web = () => {
                 </div>
               </div>
 
-              {/* ==================================================
-                  ROW 2
-              ================================================== */}
+              {/* ROW 2 */}
 
               <div className="contact-form-row">
-                {/* Email */}
-
                 <div className="contact-field">
                   <label htmlFor="email">
                     EMAIL
@@ -700,8 +697,6 @@ export const Contact_Form_Web = () => {
                     disabled={isSubmitting}
                   />
                 </div>
-
-                {/* Phone */}
 
                 <div className="contact-field">
                   <label htmlFor="phone">
@@ -721,9 +716,7 @@ export const Contact_Form_Web = () => {
                 </div>
               </div>
 
-              {/* ==================================================
-                  SERVICE
-              ================================================== */}
+              {/* SERVICE */}
 
               <div className="contact-field contact-select-field">
                 <label htmlFor="service">
@@ -759,6 +752,10 @@ export const Contact_Form_Web = () => {
                       Website Maintenance
                     </option>
 
+                    <option value="Basic SEO">
+                      Basic SEO
+                    </option>
+
                     <option value="Other">
                       Other
                     </option>
@@ -771,9 +768,7 @@ export const Contact_Form_Web = () => {
                 </div>
               </div>
 
-              {/* ==================================================
-                  MESSAGE
-              ================================================== */}
+              {/* MESSAGE */}
 
               <div className="contact-field contact-message-field">
                 <label htmlFor="message">
@@ -792,9 +787,7 @@ export const Contact_Form_Web = () => {
                 ></textarea>
               </div>
 
-              {/* ==================================================
-                  SUBMIT BUTTON
-              ================================================== */}
+              {/* SUBMIT BUTTON */}
 
               <button
                 type="submit"
@@ -821,9 +814,49 @@ export const Contact_Form_Web = () => {
             </form>
           </div>
         </div>
+
+        {/* ==================================================
+            MAP
+        ================================================== */}
+
+        <div className="contact-map-container">
+          <div className="contact-map">
+            <iframe
+              title={`${BUSINESS_NAME} location on Google Maps`}
+              src={mapEmbedUrl}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            ></iframe>
+
+            <div className="contact-map-card">
+              <div className="contact-map-card-icon">
+                <MapPin size={20} strokeWidth={1.8} />
+              </div>
+
+              <div className="contact-map-card-text">
+                <small>FIND US HERE</small>
+
+                <strong>{BUSINESS_NAME}</strong>
+
+                <span>{BUSINESS_ADDRESS}</span>
+              </div>
+
+              <a
+                href={mapDirectionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-map-btn"
+              >
+                <span>GET DIRECTIONS</span>
+
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );
 };
-
 

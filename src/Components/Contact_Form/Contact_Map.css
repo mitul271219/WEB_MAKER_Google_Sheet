@@ -1,0 +1,212 @@
+
+/* ==================================================
+   CONTACT MAP
+   Isse Conatct_Form.css ke BAAD import karo (jsx me already hai).
+================================================== */
+
+/* Address row: lamba address wrap ho, arrow se na takraye */
+.contact-detail-content {
+  min-width: 0;
+}
+
+.contact-detail-content span {
+  line-height: 1.5;
+}
+
+.contact-detail .contact-detail-arrow {
+  flex-shrink: 0;
+  margin-left: 14px;
+}
+
+/* 4th detail (address) ki animation, baaki 3 pehle se hain */
+.contact-visible .contact-detail:nth-child(4) {
+  animation: contactDetailReveal 0.7s ease 0.65s both;
+}
+
+/* ==================================================
+   MAP WRAPPER
+================================================== */
+
+.contact-map-container {
+  width: 88%;
+  max-width: 1110px;
+  margin: 90px auto 0;
+
+  opacity: 0;
+  transform: translateY(45px);
+
+  transition:
+    opacity 0.9s ease 0.3s,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.contact-visible .contact-map-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-map {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #d8d7d3;
+  border-radius: 18px;
+  background: #e9eef5;
+  box-shadow: 0 20px 45px rgba(30, 40, 70, 0.1);
+}
+
+.contact-map iframe {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border: 0;
+}
+
+/* ==================================================
+   FLOATING ADDRESS CARD (map ke upar)
+================================================== */
+
+.contact-map-card {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+
+  width: 310px;
+  max-width: calc(100% - 48px);
+  padding: 22px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  box-sizing: border-box;
+}
+
+.contact-map-card-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+  background: #7255df;
+  color: #ffffff;
+}
+
+.contact-map-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-map-card-text small {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #6b6b6b;
+}
+
+.contact-map-card-text strong {
+  font-size: 18px;
+  font-weight: 600;
+  color: #171717;
+}
+
+.contact-map-card-text span {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #3d3d3d;
+}
+
+.contact-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 11px 18px;
+
+  border-radius: 24px;
+  background: #171717;
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-decoration: none;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    gap 0.3s ease;
+}
+
+.contact-map-btn:hover {
+  transform: translateY(-3px);
+  background: #7255df;
+  gap: 12px;
+}
+
+.contact-map-btn:focus-visible {
+  outline: 3px solid #7255df;
+  outline-offset: 3px;
+}
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 1000px) {
+  .contact-map-container {
+    max-width: 750px;
+    margin-top: 70px;
+  }
+}
+
+/* ==================================================
+   MOBILE: card map ke neeche aa jaye (map dhakke nahi)
+================================================== */
+
+@media (max-width: 700px) {
+  .contact-map-container {
+    margin-top: 55px;
+  }
+
+  .contact-map iframe {
+    height: 300px;
+  }
+
+  .contact-map-card {
+    position: static;
+    width: 100%;
+    max-width: none;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: 1px solid #e6e6e1;
+  }
+
+  .contact-map-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ==================================================
+   REDUCED MOTION
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-map-container {
+    transform: none;
+    transition: opacity 0.6s ease;
+  }
+
+  .contact-map-btn {
+    transition: none;
+  }
+}
