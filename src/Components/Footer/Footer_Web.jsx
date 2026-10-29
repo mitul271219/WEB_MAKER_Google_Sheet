@@ -141,11 +141,11 @@
 
 
 
-
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Sparkles, Globe2, MessageCircle } from "lucide-react";
 import "./Footer.css";
+import { whatsappLink } from "../../config/contact";
 
 export const Footer_Web = () => {
   const footerRef = useRef(null);
@@ -303,7 +303,9 @@ export const Footer_Web = () => {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/919999999999?text=Hello%20WEB_MAKER%2C%20I%20want%20to%20discuss%20a%20website%20for%20my%20business."
+                href={whatsappLink(
+                  "Hello Mitul Panchal, I want to discuss a website for my business."
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-social-btn"

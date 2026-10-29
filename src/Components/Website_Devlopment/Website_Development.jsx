@@ -10,6 +10,9 @@ import {
 } from "lucide-react";
 
 import "./Website_Development.css";
+import "../Shared/Service_WhatsApp.css";
+import { MessageCircle as WhatsAppIcon } from "lucide-react";
+import { OWNER_NAME, whatsappLink } from "../../config/contact";
 import { Navbar_Web } from "../Navbar/Navbar_Web";
 import { Contact_Form_Web } from "../Contact_Form/Contact_Form_Web";
 import { Footer_Web } from "../Footer/Footer_Web";
@@ -106,9 +109,23 @@ export const Website_Development = () => {
               easily.
             </p>
 
-            <a href="#contact" className="wd-btn">
-              Learn More
-            </a>
+            <div className="svc-hero-actions">
+              <a href="#contact" className="wd-btn">
+                Learn More
+              </a>
+
+              <a
+                href={whatsappLink(
+                  `Hello ${OWNER_NAME}, I am interested in Website Development. Please share more details.`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="svc-wa-btn"
+              >
+                <WhatsAppIcon size={17} strokeWidth={1.9} />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
           </div>
 
           <div className="wd-hero-image wd-reveal wd-from-right">

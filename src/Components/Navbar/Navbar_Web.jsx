@@ -164,11 +164,11 @@
 
 
 
-
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
 import "./Navbar.css";
+import { whatsappLink } from "../../config/contact";
 
 export const Navbar_Web = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -180,17 +180,9 @@ export const Navbar_Web = () => {
     setMenuOpen(false);
   };
 
+  // Click-to-Chat: number aur message ../../config/contact.js se aata hai
   const openWhatsApp = () => {
-    const phoneNumber = "919876543210";
-
-    const message = encodeURIComponent(
-      "Hello WEB_MAKER, I would like to know more about your services."
-    );
-
-    window.open(
-      `https://wa.me/${phoneNumber}?text=${message}`,
-      "_blank"
-    );
+    window.open(whatsappLink(), "_blank", "noopener,noreferrer");
   };
 
   // ======================================================

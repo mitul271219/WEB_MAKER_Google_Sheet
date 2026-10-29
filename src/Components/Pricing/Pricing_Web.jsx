@@ -197,10 +197,11 @@
 
 
 
-
 import React, { useEffect, useRef, useState } from "react";
-import { Check, ArrowUpRight, X } from "lucide-react";
-import './Pricing.css'
+import { Check, ArrowUpRight, X, MessageCircle } from "lucide-react";
+import "./Pricing.css";
+import "./Pricing_WhatsApp.css";
+import { OWNER_NAME, whatsappLink } from "../../config/contact";
 
 export const Pricing_Web = () => {
   const pricingRef = useRef(null);
@@ -533,7 +534,6 @@ export const Pricing_Web = () => {
                   ))}
                 </div>
 
-                {/* Get Started ki jagah Learn More */}
                 <button
                   type="button"
                   className="pricing-button"
@@ -605,7 +605,7 @@ export const Pricing_Web = () => {
               <h3>What's included</h3>
 
               <div className="package-modal-details">
-                {selectedPlan.details.map((item, index) => (
+                {selectedPlan.details.map((item) => (
                   <div
                     className="package-detail-item"
                     key={item.title}
@@ -663,6 +663,20 @@ export const Pricing_Web = () => {
                 <span>ENQUIRE ABOUT THIS PACKAGE</span>
                 <ArrowUpRight size={17} />
               </button>
+
+              {/* Click-to-Chat: package ka naam aur price message me pehle se bhara hota hai */}
+              <a
+                href={whatsappLink(
+                  `Hello ${OWNER_NAME}, I am interested in the ${selectedPlan.name} package (₹${selectedPlan.price}). Please share more details.`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="package-modal-whatsapp"
+                onClick={closePlan}
+              >
+                <MessageCircle size={17} strokeWidth={1.9} />
+                <span>ASK ON WHATSAPP</span>
+              </a>
             </div>
           </div>
         </div>

@@ -1,0 +1,300 @@
+
+/* =========================================
+   HERO VIDEO-STYLE SLIDER
+   HeroSection.css ke BAAD import hota hai (jsx me already hai).
+   Purani HeroSection.css badalni nahi padegi.
+========================================= */
+
+/* Image ab "lambi website screenshot" hai jo andar scroll hoti hai,
+   isliye purane cover/transition rules override kiye hain */
+
+.website-slide .website-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: initial;
+  object-position: initial;
+
+  transition: none;
+  will-change: transform;
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* hover par purana zoom band (video effect ke saath takrata tha) */
+.website-card:hover .website-image {
+  transform: none;
+}
+
+/* Slides: halka blur + zoom ke saath crossfade (scene change jaisa) */
+
+.website-slide {
+  filter: blur(6px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 1s ease,
+    filter 0.8s ease;
+}
+
+.website-slide.active {
+  filter: blur(0);
+}
+
+/* =========================================
+   LIVE BADGE (top-left)
+========================================= */
+
+.video-badge {
+  position: absolute;
+
+  top: 14px;
+  left: 14px;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 12px 6px 10px;
+
+  border-radius: 50px;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.video-rec {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #ff4d4f;
+
+  animation: videoRecPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes videoRecPulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(255, 77, 79, 0.6);
+  }
+
+  50% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 5px rgba(255, 77, 79, 0);
+  }
+}
+
+/* =========================================
+   VIDEO CONTROLS (bottom bar)
+========================================= */
+
+.video-controls {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 34px 16px 14px;
+
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent);
+
+  opacity: 0.92;
+
+  transition: opacity 0.3s ease;
+}
+
+.website-image-wrapper:hover .video-controls {
+  opacity: 1;
+}
+
+.video-play {
+  flex-shrink: 0;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.video-play:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.08);
+}
+
+.video-play:focus-visible,
+.video-segment:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Segmented progress bar (har website ka apna segment) */
+
+.video-segments {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+  gap: 5px;
+}
+
+.video-segment {
+  position: relative;
+
+  flex: 1;
+
+  height: 16px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.video-segment::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 6px;
+
+  height: 4px;
+
+  border-radius: 4px;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  transition: height 0.2s ease, top 0.2s ease;
+}
+
+.video-segment:hover::before {
+  top: 5px;
+
+  height: 6px;
+}
+
+.video-segment-fill {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 6px;
+
+  height: 4px;
+
+  border-radius: 4px;
+
+  background: #ffffff;
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: height 0.2s ease, top 0.2s ease;
+}
+
+.video-segment:hover .video-segment-fill {
+  top: 5px;
+
+  height: 6px;
+}
+
+.video-time {
+  flex-shrink: 0;
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  font-variant-numeric: tabular-nums;
+
+  letter-spacing: 0.02em;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+  .video-badge {
+    top: 10px;
+    left: 10px;
+
+    padding: 5px 10px 5px 8px;
+
+    font-size: 10px;
+  }
+
+  .video-controls {
+    gap: 8px;
+
+    padding: 28px 10px 10px;
+  }
+
+  .video-play {
+    width: 26px;
+    height: 26px;
+  }
+
+  .video-time {
+    display: none;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .video-rec {
+    animation: none;
+  }
+
+  .website-slide {
+    filter: none;
+  }
+}

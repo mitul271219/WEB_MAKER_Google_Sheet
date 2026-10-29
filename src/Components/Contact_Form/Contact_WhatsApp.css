@@ -1,0 +1,87 @@
+
+/* ==================================================
+   CONTACT FORM: SEND ON WHATSAPP BUTTON
+   Conatct_Form.css ke BAAD import hota hai (jsx me already hai).
+================================================== */
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-whatsapp-btn {
+  min-width: 175px;
+  height: 47px;
+
+  padding: 0 21px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 1.5px solid #25d366;
+  border-radius: 28px;
+
+  background: transparent;
+  color: #128c4a;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.contact-whatsapp-btn:hover {
+  transform: translateY(-4px);
+
+  background: #25d366;
+  color: #ffffff;
+
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.28);
+}
+
+.contact-whatsapp-btn:focus-visible {
+  outline: 3px solid #128c4a;
+  outline-offset: 3px;
+}
+
+.contact-whatsapp-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==================================================
+   MOBILE: dono buttons poori width me, ek ke neeche ek
+================================================== */
+
+@media (max-width: 600px) {
+  .contact-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-whatsapp-btn,
+  .contact-actions .contact-submit-btn {
+    width: 100%;
+    min-height: 50px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-whatsapp-btn {
+    transition: none;
+  }
+}

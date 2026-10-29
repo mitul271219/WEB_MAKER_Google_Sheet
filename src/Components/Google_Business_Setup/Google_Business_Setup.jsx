@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useRef } from "react";
 import {
   MapPinned,
@@ -12,6 +10,9 @@ import {
 } from "lucide-react";
 
 import "./Google_Business_Setup.css";
+import "../Shared/Service_WhatsApp.css";
+import { MessageCircle as WhatsAppIcon } from "lucide-react";
+import { OWNER_NAME, whatsappLink } from "../../config/contact";
 import { Navbar_Web } from "../Navbar/Navbar_Web";
 import { Contact_Form_Web } from "../Contact_Form/Contact_Form_Web";
 import { Footer_Web } from "../Footer/Footer_Web";
@@ -108,9 +109,23 @@ export const Google_Business_Setup = () => {
                 visit you with ease.
               </p>
 
-              <a href="#contact" className="gb-btn">
-                Learn More
-              </a>
+              <div className="svc-hero-actions">
+                <a href="#contact" className="gb-btn">
+                  Learn More
+                </a>
+
+                <a
+                  href={whatsappLink(
+                    `Hello ${OWNER_NAME}, I am interested in Google Business Setup. Please share more details.`
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="svc-wa-btn"
+                >
+                  <WhatsAppIcon size={17} strokeWidth={1.9} />
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
             </div>
 
             <div className="gb-hero-image gb-reveal gb-from-right">

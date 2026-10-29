@@ -1,0 +1,60 @@
+
+/* ==================================================
+   PRICING POPUP: ASK ON WHATSAPP
+   Pricing.css ke BAAD import hota hai (jsx me already hai).
+================================================== */
+
+/* Footer me dono buttons ek ke neeche ek */
+.package-modal-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.package-modal-whatsapp {
+  width: 100%;
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 0 17px;
+
+  border: 1.5px solid #25d366;
+  border-radius: 3px;
+
+  background: transparent;
+  color: #128c4a;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.package-modal-whatsapp:hover {
+  background: #25d366;
+  border-color: #25d366;
+  color: #ffffff;
+}
+
+.package-modal-whatsapp:focus-visible {
+  outline: 2px solid #128c4a;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .package-modal-whatsapp {
+    transition: none;
+  }
+}

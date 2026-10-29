@@ -340,8 +340,6 @@
 // };
 
 
-
-
 import React, { useEffect, useRef, useState } from "react";
 
 import {
@@ -356,6 +354,7 @@ import {
 
 import "./Conatct_Form.css";
 import "./Contact_Map.css";
+import "./Contact_WhatsApp.css";
 
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -364,6 +363,10 @@ import { PostContactSheet } from "../../Reducx_Store/TesterSlice";
 import {
   BUSINESS_ADDRESS,
   BUSINESS_NAME,
+  OWNER_NAME,
+  WHATSAPP_DISPLAY,
+  whatsappLink,
+  buildEnquiryMessage,
   mapEmbedUrl,
   mapDirectionsUrl,
 } from "../../config/contact";
@@ -486,6 +489,24 @@ export const Contact_Form_Web = () => {
   };
 
   // ==================================================
+  // SEND ENQUIRY VIA WHATSAPP (Customer Enquiry Support)
+  // Form ki details WhatsApp message me bhar kar chat khol deta hai
+  // ==================================================
+
+  const handleWhatsAppEnquiry = (event) => {
+    const form = event.currentTarget.form;
+
+    // Required fields check (browser ke native messages ke saath)
+    if (form && !form.reportValidity()) return;
+
+    window.open(
+      whatsappLink(buildEnquiryMessage(formData)),
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  // ==================================================
   // JSX
   // ==================================================
 
@@ -536,7 +557,9 @@ export const Contact_Form_Web = () => {
               {/* WHATSAPP */}
 
               <a
-                href="https://wa.me/919999999999?text=Hello%20WEB_MAKER%2C%20I%20want%20to%20discuss%20a%20website%20for%20my%20business."
+                href={whatsappLink(
+                  `Hello ${OWNER_NAME}, I want to discuss a website for my business.`
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-detail"
@@ -549,9 +572,9 @@ export const Contact_Form_Web = () => {
                 </div>
 
                 <div className="contact-detail-content">
-                  <small>WHATSAPP</small>
+                  <small>WHATSAPP · {OWNER_NAME.toUpperCase()}</small>
 
-                  <span>+91 99999 99999</span>
+                  <span>{WHATSAPP_DISPLAY}</span>
                 </div>
 
                 <ArrowUpRight
@@ -787,30 +810,43 @@ export const Contact_Form_Web = () => {
                 ></textarea>
               </div>
 
-              {/* SUBMIT BUTTON */}
+              {/* SUBMIT + WHATSAPP BUTTONS */}
 
-              <button
-                type="submit"
-                className="contact-submit-btn"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <>
-                    <LoaderCircle
-                      className="submit-spinner"
-                      size={17}
-                    />
+              <div className="contact-actions">
+                <button
+                  type="submit"
+                  className="contact-submit-btn"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <LoaderCircle
+                        className="submit-spinner"
+                        size={17}
+                      />
 
-                    <span>SENDING...</span>
-                  </>
-                ) : (
-                  <>
-                    <span>SEND ENQUIRY</span>
+                      <span>SENDING...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>SEND ENQUIRY</span>
 
-                    <ArrowUpRight size={16} />
-                  </>
-                )}
-              </button>
+                      <ArrowUpRight size={16} />
+                    </>
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  className="contact-whatsapp-btn"
+                  onClick={handleWhatsAppEnquiry}
+                  disabled={isSubmitting}
+                >
+                  <MessageCircle size={17} strokeWidth={1.9} />
+
+                  <span>SEND ON WHATSAPP</span>
+                </button>
+              </div>
             </form>
           </div>
         </div>

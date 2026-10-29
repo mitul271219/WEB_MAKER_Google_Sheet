@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 import "./CTA.css";
+import { OWNER_NAME, whatsappLink } from "../../config/contact";
 
 export const CTA_Web = () => {
   const ctaRef = useRef(null);
@@ -68,9 +69,11 @@ export const CTA_Web = () => {
               <ArrowUpRight size={16} strokeWidth={2} />
             </a>
 
-            {/* WhatsApp */}
+            {/* WhatsApp (Click-to-Chat) */}
             <a
-              href="https://wa.me/919999999999?text=Hello%20WEB_MAKER%2C%20I%20want%20to%20discuss%20a%20website%20for%20my%20business."
+              href={whatsappLink(
+                `Hello ${OWNER_NAME}, I want to discuss a website for my business.`
+              )}
               target="_blank"
               rel="noopener noreferrer"
               className="cta-whatsapp-btn"
