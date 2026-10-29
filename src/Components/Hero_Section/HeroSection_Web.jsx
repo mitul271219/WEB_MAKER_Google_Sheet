@@ -17,31 +17,31 @@ import "./HeroSlider_Extra.css";
 // ===============================
 const slides = [
   {
-    image: "/images/hero/hero-salon.svg",
+    image: "https://cdn.dribbble.com/userupload/45074327/file/02e93c4bdfbf59ad987212eb6a29be69.jpg",
     alt: "Beauty salon website design",
     label: "Beauty Salon",
     url: "glowsalon.com",
   },
   {
-    image: "/images/hero/hero-restaurant.svg",
+    image: "https://i.ytimg.com/vi/jtqI_y9aw10/sddefault.jpg",
     alt: "Restaurant website design",
     label: "Restaurant",
     url: "spiceroute.in",
   },
   {
-    image: "/images/hero/hero-realestate.svg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSmL49mJMNN3nGlppr-AVN0EJ4mzaxwntK8o3w1VNHNVnRQqtPX8Bfhf6C&s=10",
     alt: "Real estate website design",
     label: "Real Estate",
     url: "urbannest.in",
   },
   {
-    image: "/images/hero/hero-gym.svg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnCwAGi_NCZjIgR9TqaArYd4K2OmUYiwmU3fC1DEHC2PaNuVbIP0AcnzGM&s=10",
     alt: "Fitness gym website design",
     label: "Fitness Gym",
     url: "ironpulse.fit",
   },
   {
-    image: "/images/hero/hero-clinic.svg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhaMxlHyznkqIspj0YjdeAeVPX1VlzNFjInheW0q88s5CCioWaQlmUmQM&s=10",
     alt: "Dental clinic website design",
     label: "Dental Clinic",
     url: "brightsmile.care",
