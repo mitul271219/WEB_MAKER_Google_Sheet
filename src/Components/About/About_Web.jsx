@@ -8,7 +8,6 @@ import {
   ArrowUpRight,
   Target,
   Eye,
-  MessageCircle,
   MessagesSquare,
   PenTool,
   Code2,
@@ -17,7 +16,6 @@ import {
 } from "lucide-react";
 import "./About.css";
 import "./About_Extra.css";
-import { whatsappLink } from "../../config/contact";
 
 /* =========================================================
    EDIT YOUR CONTENT HERE
@@ -464,39 +462,7 @@ export const About_Web = () => {
         </section>
       )}
 
-      {/* =====================================================
-          FINAL CTA
-      ===================================================== */}
-      <section className="ab-section ab-cta-section">
-        <div className="ab-container">
-          <div className="ab-cta ab-reveal ab-zoom">
-            <h2>Ready to get your business online?</h2>
-            <p>
-              Tell us what you need. We will reply with a clear plan and a
-              simple price, with no pressure.
-            </p>
-
-            <div className="ab-cta-buttons">
-              <a href="#contact" className="ab-btn ab-btn-primary">
-                <span>Get a free consultation</span>
-                <ArrowUpRight size={18} />
-              </a>
-
-              <a
-                href={whatsappLink(
-                  "Hello WEB_MAKER, I want to discuss a website for my business."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ab-btn ab-btn-outline"
-              >
-                <MessageCircle size={18} />
-                <span>Chat on WhatsApp</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+    
     </div>
   );
 };

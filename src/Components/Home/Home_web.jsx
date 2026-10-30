@@ -18,12 +18,12 @@ export const Home_web = () => {
       <Navbar_Web />
       <HeroSection_Web />
       <About_Web />
+      <CTA_Web />
       <Services_Web />
       <How_Its_Work_web />
       <WhyChooseUs_web/>
       <Selected_Work_web />
       <Pricing_Web />
-      <CTA_Web />
       <Contact_Form_Web />
       <Footer_Web />
       <FloatingButtons_Web/>
