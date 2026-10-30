@@ -586,7 +586,7 @@ export const Contact_Form_Web = () => {
               {/* EMAIL */}
 
               <a
-                href="mailto:hello@webmaker.in"
+                href="mailto:mitulwork2712@gmail.com"
                 className="contact-detail"
               >
                 <div className="contact-detail-icon">
@@ -599,7 +599,7 @@ export const Contact_Form_Web = () => {
                 <div className="contact-detail-content">
                   <small>EMAIL US</small>
 
-                  <span>hello@webmaker.in</span>
+                  <span>mitulwork2712@gmail.com</span>
                 </div>
 
                 <ArrowUpRight

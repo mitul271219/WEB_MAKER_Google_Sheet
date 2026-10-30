@@ -42,24 +42,32 @@ export const buildEnquiryMessage = (data = {}) => {
 };
 
 // =========================================
-// BUSINESS LOCATION (Contact form ke map ke liye)
+// BUSINESS LOCATION
+// "Visit Us" row aur Map, dono yahin se address lete hain
 // =========================================
 
-// TODO: apna poora asli address daalo (shop/office number, area, city, state, pincode)
-export const BUSINESS_ADDRESS = "Your Business Address, City, State, Pincode";
+// Screen par dikhne wala address ("Visit Us" aur map ke card me)
+export const BUSINESS_ADDRESS =
+  "Danapith, Gollimda, Ahmedabad – 380001, Gujarat";
 
-// OPTIONAL (zyada exact pin ke liye):
+// Google Maps me search hone wala text.
+// Agar map galat jagah dikhaye to yahan spelling badal kar dekho,
+// jaise: "Gol Limda, Danapith, Ahmedabad, Gujarat 380001"
+// (screen par dikhne wala address upar wala hi rahega)
+export const MAP_SEARCH_QUERY = BUSINESS_ADDRESS;
+
+// OPTIONAL (sabse exact pin ke liye):
 // Google Maps kholo -> apni jagah search karo -> Share -> "Embed a map" -> HTML copy karo
-// aur usme se sirf src="..." ka link yahan paste karo. Khali chhodoge to upar wale address se map banega.
+// aur usme se sirf src="..." ka link yahan paste karo. Khali chhodoge to upar wale text se map banega.
 export const MAP_EMBED_SRC = "";
 
 export const mapEmbedUrl =
   MAP_EMBED_SRC ||
   `https://www.google.com/maps?q=${encodeURIComponent(
-    BUSINESS_ADDRESS
+    MAP_SEARCH_QUERY
   )}&output=embed`;
 
 // "Get directions" button ka link (Google Maps app / website me khulta hai)
 export const mapDirectionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  BUSINESS_ADDRESS
+  MAP_SEARCH_QUERY
 )}`;
