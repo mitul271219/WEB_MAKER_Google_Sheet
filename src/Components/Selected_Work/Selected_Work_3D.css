@@ -1,0 +1,603 @@
+
+/* =========================================
+   SELECTED WORK: 3D / 4D LAYER
+   Selected_Work.css ke BAAD import karo (Selected_Work_Web.jsx me already hai).
+   Purani CSS badalni nahi padegi, ye usse override karti hai.
+
+   3D = depth (perspective, tilt, layers aage-peeche)
+   4th D = motion (scroll up/down par reveal, scroll-linked tilt,
+           andar ki website ka scroll, scroll speed ka lean)
+========================================= */
+
+.work-section {
+  position: relative;
+}
+
+.work-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* teeno containers apna perspective dete hain taaki bachchon me depth aaye */
+.work-container,
+.work-header,
+.work-grid {
+  perspective: 1400px;
+}
+
+/* =========================================
+   1) BACKGROUND (scroll ke saath hilta hai)
+========================================= */
+
+.work-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.work-bg-grid {
+  position: absolute;
+  inset: -10% 0;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 54px 54px;
+  background-position: 0 calc(var(--sp, 0) * 90px);
+  mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 25%,
+    black 75%,
+    transparent
+  );
+}
+
+.work-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  transition: transform 0.2s ease-out;
+}
+
+.work-bg-orb-one {
+  width: 340px;
+  height: 340px;
+  top: 6%;
+  right: -90px;
+  background: rgba(198, 241, 61, 0.12);
+  transform: translate3d(0, calc(var(--sp, 0) * -90px), 0);
+}
+
+.work-bg-orb-two {
+  width: 380px;
+  height: 380px;
+  bottom: 2%;
+  left: -130px;
+  background: rgba(114, 85, 223, 0.28);
+  transform: translate3d(0, calc(var(--sp, 0) * 110px), 0);
+}
+
+/* =========================================
+   2) 3D REVEAL (scroll up ya down, har baar)
+   Neeche se aate time: depth se aage aata hai
+   Upar jaate time: upar ghoom kar nikalta hai
+   "translate" / "rotate" / "scale" use hue hain, taaki "transform"
+   tilt aur scroll-lean ke liye free rahe.
+========================================= */
+
+.work-section .wk-reveal {
+  --ax: 1;
+  --ay: 0;
+  --ang: 18deg;
+  --fx: 0px;
+
+  opacity: 0;
+  translate: var(--fx) 70px -140px;
+  rotate: var(--ax) var(--ay) 0 var(--ang);
+  transform: none;
+  transform-origin: 50% 60%;
+
+  transition:
+    opacity 0.8s ease var(--d, 0s),
+    translate 1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s),
+    rotate 1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s),
+    transform 0.25s ease-out,
+    box-shadow 0.4s ease;
+}
+
+.work-section .wk-reveal.wk-left {
+  --fx: -90px;
+  --ax: 0;
+  --ay: 1;
+  --ang: 32deg;
+}
+
+.work-section .wk-reveal.wk-right {
+  --fx: 90px;
+  --ax: 0;
+  --ay: 1;
+  --ang: -32deg;
+}
+
+/* upar scroll karke nikalte time */
+.work-section .wk-reveal.out-up {
+  --fx: 0px;
+  translate: 0 -70px -120px;
+  --ang: -16deg;
+}
+
+.work-section .wk-reveal.is-in {
+  --d: var(--card-delay, 0s);
+  --fx: 0px;
+  --ang: 0deg;
+  opacity: 1;
+  translate: 0 0 0;
+}
+
+/* button ki purani colour/gap transition bhi rahe */
+.work-section .work-project-btn.wk-reveal {
+  transition:
+    opacity 0.8s ease var(--d, 0s),
+    translate 1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s),
+    rotate 1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s),
+    color 0.3s ease,
+    border-color 0.3s ease,
+    gap 0.3s ease;
+}
+
+/* =========================================
+   3) HEADING: scroll ke saath alag speed se chalta hai
+========================================= */
+
+.work-section .work-heading {
+  transform: translate3d(0, calc(var(--sp, 0) * 26px), 0);
+}
+
+.work-intro {
+  max-width: 440px;
+  margin: 22px 0 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* =========================================
+   4) CARDS: pointer tilt + scroll-linked tilt
+========================================= */
+
+.work-section .work-grid .work-card,
+.work-section .work-grid .work-card:hover {
+  overflow: visible;
+  background: transparent;
+  transform-style: preserve-3d;
+  touch-action: pan-y;
+  will-change: transform, translate, rotate;
+
+  /* --cp: scroll position, --sv: scroll speed, --rx/--ry: pointer */
+  transform: rotateX(calc(var(--rx, 0deg) + var(--cp, 0) * 7deg + var(--sv, 0deg)))
+    rotateY(var(--ry, 0deg)) translate3d(0, var(--lift, 0px), 0);
+}
+
+.work-section .work-grid .work-card:hover {
+  --lift: -10px;
+  box-shadow: none;
+}
+
+/* preview aur info ko apni radius milti hai (card ab overflow visible hai) */
+.work-section .work-preview {
+  border-radius: 12px 12px 0 0;
+  translate: 0 0 26px;
+  box-shadow: 0 -2px 0 rgba(255, 255, 255, 0.04);
+}
+
+.work-section .work-info {
+  border-radius: 0 0 12px 12px;
+  transform-style: preserve-3d;
+  translate: 0 0 10px;
+  box-shadow: 0 30px 50px rgba(8, 6, 24, 0.35);
+}
+
+.work-section .work-info-top {
+  transform-style: preserve-3d;
+}
+
+.work-section .work-arrow {
+  translate: 0 0 38px;
+}
+
+/* chamakta hua glare, pointer ke point par */
+.work-section .work-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.2),
+    transparent 55%
+  );
+  transform: translateZ(50px);
+  transition: opacity 0.3s ease;
+}
+
+.work-section .work-card:hover::after {
+  opacity: 1;
+}
+
+/* =========================================
+   5) REALISTIC WEBSITE PREVIEW
+   Andar ka page scroll-linked: card jaise upar jaata hai,
+   website bhi andar scroll hoti hai (upar aur neeche dono me)
+========================================= */
+
+.work-section .browser-header {
+  height: 30px;
+  padding: 0 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 2;
+}
+
+.work-section .browser-name {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.work-section .browser-links {
+  gap: 9px;
+  font-size: 7px;
+  font-weight: 500;
+}
+
+.browser-cta {
+  padding: 3px 7px;
+  border-radius: 20px;
+  background: var(--mock-accent, #171717);
+  color: #ffffff;
+  font-size: 6.5px;
+  font-weight: 700;
+}
+
+/* har theme ka apna accent */
+.work-card.restaurant {
+  --mock-accent: #c5811f;
+}
+
+.work-card.healthcare {
+  --mock-accent: #2f8696;
+}
+
+.work-card.studio {
+  --mock-accent: #3f7d56;
+}
+
+.mock-viewport {
+  position: relative;
+  height: calc(100% - 30px);
+  overflow: hidden;
+}
+
+.restaurant .mock-viewport {
+  background: linear-gradient(160deg, #f6e9cc, #fffaf0);
+}
+
+.healthcare .mock-viewport {
+  background: linear-gradient(160deg, #e4f1f4, #f6fbfc);
+}
+
+.studio .mock-viewport {
+  background: linear-gradient(160deg, #e2efe2, #f6fbf6);
+}
+
+.mock-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 165%;
+  padding: 22px 16px 16px;
+  color: #1c1c1c;
+
+  /* cp = +1 (card neeche) se -1 (card upar): page 0 se -34% tak scroll hota hai */
+  transform: translateY(calc((1 - var(--cp, 0)) * -17% + var(--hx, 0%)));
+  transition: transform 0.35s ease-out;
+}
+
+.work-card:hover .mock-page {
+  --hx: -3%;
+}
+
+.mock-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.mock-eyebrow {
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--mock-accent, #7761d9);
+}
+
+.mock-title {
+  max-width: 92%;
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #171717;
+}
+
+.mock-sub {
+  max-width: 88%;
+  font-size: 8px;
+  line-height: 1.5;
+  color: #555555;
+}
+
+.mock-buttons {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mock-btn {
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 7px;
+  font-weight: 700;
+}
+
+.mock-btn-primary {
+  background: var(--mock-accent, #171717);
+  color: #ffffff;
+}
+
+.mock-btn-ghost {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: #222222;
+}
+
+.mock-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mock-block-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: #171717;
+}
+
+.mock-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.mock-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.14);
+  font-size: 8px;
+  color: #2b2b2b;
+}
+
+.mock-row:last-child {
+  border-bottom: none;
+}
+
+.mock-row em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--mock-accent, #171717);
+}
+
+.mock-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.mock-tile {
+  display: flex;
+  align-items: flex-end;
+  height: 56px;
+  padding: 6px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 7px;
+  font-weight: 700;
+}
+
+.mock-tile:nth-child(1) {
+  background: linear-gradient(135deg, #3f7d56, #1f4d33);
+}
+
+.mock-tile:nth-child(2) {
+  background: linear-gradient(135deg, #7255df, #3a2a8c);
+}
+
+.mock-tile:nth-child(3) {
+  background: linear-gradient(135deg, #d9825b, #8f3f23);
+}
+
+.mock-tile:nth-child(4) {
+  background: linear-gradient(135deg, #2f8696, #174b57);
+}
+
+.mock-note {
+  margin-top: auto;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: var(--mock-accent, #171717);
+  color: #ffffff;
+  font-size: 7px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* =========================================
+   6) CARD INFORMATION (zyada realistic)
+========================================= */
+
+.work-section .work-type {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+}
+
+.work-concept {
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: rgba(198, 241, 61, 0.16);
+  color: #c6f13d;
+  font-size: 7.5px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.work-section .work-info h3 {
+  font-size: 19px;
+}
+
+.work-section .work-info p {
+  max-width: 340px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.work-tags span {
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.work-section .work-info {
+  min-height: 190px;
+}
+
+/* =========================================
+   7) TABLET / MOBILE
+========================================= */
+
+@media (max-width: 1000px) {
+  /* purani rule ".work-card:last-child" ab bhi sahi chale */
+  .work-section .work-grid .work-card {
+    max-width: none;
+  }
+
+  .work-section .work-grid .work-card:last-child {
+    max-width: calc(50% - 8px);
+  }
+}
+
+@media (max-width: 650px) {
+  .work-section .work-grid .work-card:last-child {
+    max-width: none;
+  }
+
+  .work-section .wk-reveal.wk-left,
+  .work-section .wk-reveal.wk-right {
+    --fx: 0px;
+    --ax: 1;
+    --ay: 0;
+    --ang: 16deg;
+  }
+
+  .work-section .wk-reveal.out-up {
+    --ang: -12deg;
+  }
+
+  .work-section .work-preview {
+    translate: 0 0 14px;
+  }
+
+  .work-section .work-arrow {
+    translate: 0 0 22px;
+  }
+
+  .work-intro {
+    font-size: 13px;
+  }
+
+  .work-bg-orb {
+    opacity: 0.6;
+  }
+}
+
+/* touch devices: hover tilt nahi hota */
+@media (hover: none) {
+  .work-section .work-grid .work-card:hover {
+    --lift: 0px;
+  }
+}
+
+/* =========================================
+   8) REDUCED MOTION: sab 3D band, sirf halka fade
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .work-section .wk-reveal,
+  .work-section .wk-reveal.is-in,
+  .work-section .wk-reveal.out-up {
+    translate: none;
+    rotate: none;
+    transition: opacity 0.6s ease;
+  }
+
+  .work-section .work-grid .work-card,
+  .work-section .work-grid .work-card:hover,
+  .work-section .work-heading {
+    transform: none;
+  }
+
+  .work-section .work-preview,
+  .work-section .work-info,
+  .work-section .work-arrow,
+  .work-section .work-card::after {
+    translate: none;
+    transform: none;
+  }
+
+  .mock-page {
+    transform: none;
+  }
+
+  .work-bg-orb,
+  .work-bg-grid {
+    transform: none;
+    background-position: 0 0;
+  }
+}
