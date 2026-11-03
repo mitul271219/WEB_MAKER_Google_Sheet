@@ -1,0 +1,520 @@
+/* =========================================
+   ABOUT 3D / 4D LAYER
+   About_Extra.css ke BAAD import karo (About_Web.jsx me already hai).
+   3D = depth, tilt, perspective   |   4th D = motion / time
+   (scroll, mouse aur auto-animation sab mil kar)
+========================================= */
+
+/* =========================================
+   1) SCROLL REVEAL, 3D VERSION
+   Neeche se aate time: depth se aage aata hai (rotateX)
+   Upar jaate time: upar ki taraf ghoom kar nikalta hai
+   Purani 2D rules ko override karta hai
+========================================= */
+
+.ab-reveal,
+.ab-reveal.ab-from-left,
+.ab-reveal.ab-from-right,
+.ab-reveal.ab-zoom,
+.ab-reveal.ab-in,
+.ab-reveal.ab-out-up {
+  transform: perspective(1100px)
+    translate3d(var(--tx, 0px), var(--ty, 0px), var(--tz, 0px))
+    rotateX(var(--rx0, 0deg)) rotateY(var(--ry0, 0deg)) scale(var(--sc, 1));
+  transform-origin: 50% 60%;
+}
+
+.ab-reveal {
+  --ty: 70px;
+  --tz: -140px;
+  --rx0: 20deg;
+  transition:
+    opacity 0.8s ease,
+    transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ab-reveal.ab-from-left {
+  --tx: -90px;
+  --ty: 30px;
+  --tz: -120px;
+  --rx0: 6deg;
+  --ry0: 28deg;
+}
+
+.ab-reveal.ab-from-right {
+  --tx: 90px;
+  --ty: 30px;
+  --tz: -120px;
+  --rx0: 6deg;
+  --ry0: -28deg;
+}
+
+.ab-reveal.ab-zoom {
+  --ty: 60px;
+  --tz: -180px;
+  --rx0: 24deg;
+  --sc: 0.9;
+}
+
+/* upar scroll karke nikalte time */
+.ab-reveal.ab-out-up {
+  --ty: -70px;
+  --rx0: -20deg;
+}
+
+/* final: screen par aaya hua state (sabse last me, sabko override karta hai) */
+.ab-reveal.ab-in {
+  --tx: 0px;
+  --ty: 0px;
+  --tz: 0px;
+  --rx0: 0deg;
+  --ry0: 0deg;
+  --sc: 1;
+}
+
+/* =========================================
+   2) SECTION BASE
+========================================= */
+
+.ab-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-container,
+.ab-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   3) MOUSE TILT CARDS
+   .ab-tilt-wrap  = scroll reveal karta hai
+   .ab-tilt       = mouse ke saath 3D tilt hota hai
+========================================= */
+
+.ab-tilt-wrap {
+  height: 100%;
+}
+
+.ab-tilt {
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: perspective(900px)
+    rotateX(calc(var(--rx, 0deg) + var(--sv, 0deg))) rotateY(var(--ry, 0deg))
+    translate3d(0, var(--lift, 0px), 0) scale(var(--tsc, 1));
+  transition:
+    transform 0.25s ease-out,
+    box-shadow 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease;
+  will-change: transform;
+}
+
+.ab-tilt:hover {
+  --lift: -6px;
+  --tsc: 1.02;
+  box-shadow: 0 28px 50px rgba(41, 39, 60, 0.2);
+}
+
+/* chamakta hua glare, mouse ke point par */
+.ab-tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.32),
+    transparent 55%
+  );
+  transition: opacity 0.3s ease;
+}
+
+.ab-tilt:hover::after {
+  opacity: 1;
+}
+
+/* About.css ka purana 2D hover hata kar tilt wala lagate hain */
+.ab-tilt.about-feature-card:hover {
+  transform: perspective(900px)
+    rotateX(calc(var(--rx, 0deg) + var(--sv, 0deg))) rotateY(var(--ry, 0deg))
+    translate3d(0, var(--lift, 0px), 0) scale(var(--tsc, 1));
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* ---- andar ke elements card se bahar "pop" hote hain ---- */
+
+/* NOTE: yahan "translate" property use hui hai (transform nahi), taaki
+   text/image par hover wala tilt (.ab-t3d) is depth ke saath mil jaye */
+
+.ab-tilt .feature-icon {
+  translate: 0 0 38px;
+}
+
+.ab-tilt.about-feature-card:hover .feature-icon {
+  translate: 0 0 50px;
+}
+
+.ab-tilt.about-feature-card h3 {
+  translate: 0 0 26px;
+}
+
+.ab-tilt .feature-text {
+  translate: 0 0 14px;
+}
+
+.ab-tilt .feature-number {
+  transform: translateZ(20px);
+}
+
+.ab-tilt .ab-step-icon,
+.ab-tilt .ab-mv-icon {
+  translate: 0 0 42px;
+  box-shadow: 0 14px 24px rgba(41, 39, 60, 0.28);
+}
+
+.ab-tilt.ab-step h3,
+.ab-tilt.ab-mv-card h3 {
+  translate: 0 0 26px;
+}
+
+.ab-tilt.ab-step p,
+.ab-tilt.ab-mv-card p {
+  translate: 0 0 12px;
+}
+
+.ab-tilt .ab-step-number {
+  transform: translateZ(22px);
+}
+
+.ab-step:hover {
+  border-color: var(--ab-purple);
+}
+
+/* founder photo: height auto taaki aspect-ratio chale */
+.ab-tilt.ab-story-photo {
+  height: auto;
+}
+
+/* testimonial ka naam block (figcaption ki jagah div) */
+.ab-testimonial-by {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ab-testimonial-by strong {
+  font-size: 15px;
+  color: #171717;
+}
+
+.ab-testimonial-by span {
+  font-size: 13px;
+  color: #555555;
+}
+
+/* =========================================
+   4) HERO 3D SCENE (dark box, andar layers)
+   Mouse hilao to layers alag-alag depth par chalte hain
+========================================= */
+
+.visual-stage {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: perspective(900px)
+    rotateX(calc(var(--rx, 0deg) + var(--sv, 0deg) * 1.2)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+
+/* sabse peeche: grid, thoda bada taaki tilt me kinare na dikhein */
+.visual-grid {
+  inset: -14%;
+  transform: translateZ(-50px);
+}
+
+.visual-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(18px);
+  pointer-events: none;
+  animation: abOrb 7s ease-in-out infinite;
+}
+
+.visual-orb-one {
+  width: 120px;
+  height: 120px;
+  top: -20px;
+  right: 8%;
+  background: rgba(186, 255, 60, 0.38);
+}
+
+.visual-orb-two {
+  width: 150px;
+  height: 150px;
+  bottom: -40px;
+  left: -20px;
+  background: rgba(114, 85, 223, 0.6);
+  animation-delay: -3s;
+}
+
+@keyframes abOrb {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 20px);
+  }
+  50% {
+    transform: translate3d(14px, -18px, 45px);
+  }
+}
+
+/* beech wala card: sabse aage, khud bhi float karta hai */
+.website-preview-card {
+  transform-style: preserve-3d;
+  animation: abFloatCard 5s ease-in-out infinite;
+}
+
+@keyframes abFloatCard {
+  0%,
+  100% {
+    transform: rotate(-6deg) translateZ(70px) translateY(0);
+  }
+  50% {
+    transform: rotate(-6deg) translateZ(70px) translateY(-10px);
+  }
+}
+
+.website-preview-card .preview-top {
+  transform: translateZ(18px);
+}
+
+.website-preview-card .preview-heading {
+  transform: translateZ(24px);
+}
+
+.website-preview-card .preview-button {
+  transform: translateZ(34px);
+}
+
+.visual-growth {
+  transform: translateZ(55px);
+}
+
+/* heading ke coloured words par halka 3D extrude */
+.about-heading-box h2 span {
+  text-shadow:
+    1px 1px 0 rgba(114, 85, 223, 0.3),
+    2px 2px 0 rgba(114, 85, 223, 0.22),
+    3px 3px 0 rgba(114, 85, 223, 0.14),
+    4px 7px 14px rgba(41, 39, 60, 0.18);
+}
+
+/* stats ke numbers me glow */
+.ab-stat strong {
+  text-shadow: 0 6px 22px rgba(186, 255, 60, 0.35);
+}
+
+
+/* =========================================
+   5b) TEXT / IMAGE HOVER 3D  +  SCROLL LEAN
+   JS har heading, paragraph, image, icon par .ab-t3d lagata hai.
+   - cursor aaye   -> .is-hot : wahi element mouse ke point ke hisaab se 3D tilt
+   - scroll chale  -> .ab-scrolling : up/down ki direction me 3D jhukta hai,
+                      scroll ruk jaye to wapas seedha
+========================================= */
+
+.ab-t3d {
+  transition:
+    transform 0.2s ease-out,
+    scale 0.25s ease-out,
+    translate 0.2s ease-out,
+    text-shadow 0.3s ease,
+    filter 0.3s ease,
+    color 0.3s ease,
+    gap 0.3s ease;
+}
+
+.ab-t3d.is-hot,
+.about-page.ab-scrolling .ab-t3d {
+  transform: perspective(700px)
+    rotateX(calc(var(--trx, 0deg) + var(--sv, 0deg) * 0.8))
+    rotateY(var(--try, 0deg));
+}
+
+/* hover: thoda bada hota hai aur 3D extrude shadow aati hai */
+.ab-t3d.is-hot {
+  scale: 1.025;
+  text-shadow:
+    1px 1px 0 rgba(114, 85, 223, 0.35),
+    2px 2px 0 rgba(114, 85, 223, 0.25),
+    3px 3px 0 rgba(114, 85, 223, 0.15),
+    6px 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+h2.ab-t3d.is-hot,
+h3.ab-t3d.is-hot {
+  scale: 1.04;
+}
+
+/* image: neeche gehri shadow, jaise hawa me uth gayi ho */
+img.ab-t3d.is-hot {
+  text-shadow: none;
+  filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.35));
+}
+
+/* founder photo: zoom thoda zyada rakha taaki tilt me kinare na dikhein */
+.ab-story-photo img.ab-t3d {
+  scale: 1.12;
+}
+
+.ab-story-photo img.ab-t3d.is-hot {
+  scale: 1.18;
+}
+
+/* =========================================
+   5c) IMAGE / SCENE CURSOR + TOUCH FOLLOW
+   JS pointer ki position --nx / --ny (-0.5 se 0.5) me deta hai.
+   Image apne frame ke andar cursor/ungli ke saath khiskti hai,
+   hero scene ki layers alag-alag speed se khiskti hain (4D depth).
+========================================= */
+
+/* ungli se horizontal move events mile, vertical swipe se page scroll chale */
+.ab-tilt,
+.about-visual,
+img.ab-t3d {
+  touch-action: pan-y pinch-zoom;
+}
+
+/* founder photo: image cursor ke saath move karti hai */
+.ab-story-photo img {
+  translate: calc(var(--nx, 0) * 36px) calc(var(--ny, 0) * 36px);
+}
+
+/* photo ka card pehle se tilt karta hai, to image ko alag se na ghumao */
+.ab-story-photo img.ab-t3d.is-hot {
+  transform: none;
+  filter: none;
+}
+
+/* hero scene: har layer apni depth ke hisaab se khiskti hai */
+.visual-grid,
+.visual-orb,
+.website-preview-card,
+.visual-growth {
+  transition: translate 0.2s ease-out;
+}
+
+.visual-grid {
+  translate: calc(var(--nx, 0) * -26px) calc(var(--ny, 0) * -26px);
+}
+
+.visual-orb-one {
+  translate: calc(var(--nx, 0) * 50px) calc(var(--ny, 0) * 40px);
+}
+
+.visual-orb-two {
+  translate: calc(var(--nx, 0) * -50px) calc(var(--ny, 0) * -40px);
+}
+
+.website-preview-card {
+  translate: calc(var(--nx, 0) * 34px) calc(var(--ny, 0) * 26px);
+}
+
+.visual-growth {
+  translate: calc(var(--nx, 0) * 18px) calc(var(--ny, 0) * 12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-story-photo img,
+  .visual-grid,
+  .visual-orb,
+  .website-preview-card,
+  .visual-growth {
+    translate: none;
+  }
+}
+
+/* feature icon: About.css ka purana hover transform tilt ke saath mile */
+.ab-tilt.about-feature-card:hover .feature-icon.ab-t3d {
+  transform: perspective(700px)
+    rotateX(calc(var(--trx, 0deg) + var(--sv, 0deg) * 0.8))
+    rotateY(var(--try, 0deg)) translateY(-3px) scale(1.05);
+}
+
+/* =========================================
+   6) TABLET / MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+  .ab-story-grid > .ab-tilt-wrap {
+    max-width: 380px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .ab-reveal.ab-from-left,
+  .ab-reveal.ab-from-right {
+    --tx: 0px;
+    --ty: 50px;
+    --ry0: 0deg;
+    --rx0: 16deg;
+  }
+
+  .ab-reveal.ab-in {
+    --ty: 0px;
+    --rx0: 0deg;
+  }
+
+  .ab-tilt .feature-icon,
+  .ab-tilt.about-feature-card h3,
+  .ab-tilt .feature-text {
+    translate: none;
+  }
+
+  .ab-tilt .feature-number {
+    transform: none;
+  }
+}
+
+/* touch devices: hover tilt nahi hota */
+@media (hover: none) {
+  .ab-tilt:hover {
+    --lift: 0px;
+    --tsc: 1;
+  }
+}
+
+/* =========================================
+   7) REDUCED MOTION: sab 3D / animation band
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-reveal,
+  .ab-reveal.ab-from-left,
+  .ab-reveal.ab-from-right,
+  .ab-reveal.ab-zoom,
+  .ab-reveal.ab-in,
+  .ab-reveal.ab-out-up {
+    transform: none;
+    transition: opacity 0.6s ease;
+  }
+
+  .ab-tilt,
+  .ab-tilt:hover,
+  .ab-tilt.about-feature-card:hover,
+  .visual-stage {
+    transform: none;
+  }
+
+  .visual-orb,
+  .website-preview-card {
+    animation: none;
+  }
+}

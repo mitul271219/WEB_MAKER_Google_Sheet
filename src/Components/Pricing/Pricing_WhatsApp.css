@@ -1,4 +1,3 @@
-
 /* ==================================================
    PRICING POPUP: ASK ON WHATSAPP
    Pricing.css ke BAAD import hota hai (jsx me already hai).
@@ -56,5 +55,54 @@
 @media (prefers-reduced-motion: reduce) {
   .package-modal-whatsapp {
     transition: none;
+  }
+}
+
+
+/* ==================================================
+   "STARTING FROM" LABEL + GST NOTE
+   (Pricing.css ke baad import hota hai, isliye wo rules override ho jate hain)
+================================================== */
+
+/* Plan name aur price ke beech ki badi gap thodi kam karke label ke liye jagah */
+.pricing-from {
+  display: block;
+
+  margin: -14px 0 8px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: #8a8a8a;
+}
+
+/* GST note price ke neeche, description se pehle */
+.pricing-gst {
+  display: block;
+
+  margin: -8px 0 14px;
+
+  font-size: 10.5px;
+  line-height: 1.4;
+
+  color: #8a8a8a;
+}
+
+/* Popup ke price bar me label + GST note */
+.package-modal-price span small {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 11px;
+
+  color: #8a8a8a;
+}
+
+@media (max-width: 650px) {
+  .pricing-from {
+    margin-top: -10px;
   }
 }

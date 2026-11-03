@@ -35,7 +35,7 @@ const slides = [
     url: "urbannest.in",
   },
   {
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnCwAGi_NCZjIgR9TqaArYd4K2OmUYiwmU3fC1DEHC2PaNuVbIP0AcnzGM&s=10",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDZINGzTLQWy1Zy-Dl33nJHGjzX6QkGWP7123Wt7QEgBghJPAVeCnS-NE&s=10",
     alt: "Fitness gym website design",
     label: "Fitness Gym",
     url: "ironpulse.fit",
