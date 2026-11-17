@@ -1,0 +1,57 @@
+
+/* =========================================
+   SERVICES EXTRA
+   Services.css ke BAAD import hota hai (Services_Web.jsx me already hai).
+   Purani Services.css badalni nahi padegi.
+========================================= */
+
+/* =========================================
+   6 CARDS LAYOUT
+   Desktop: pehli line me 4 cards, doosri line me 2 cards beech me
+   (column 2 aur column 3)
+========================================= */
+
+.services-grid .service-card:nth-child(5) {
+  grid-column: 2;
+}
+
+/* purani "last card beech me, aadhi width" wali rule hata di */
+.services-grid .service-card:last-child {
+  grid-column: 3;
+  width: auto;
+  justify-self: stretch;
+}
+
+/* Tablet aur mobile: cards seedhi grid me (2 column / 1 column), koi centering nahi */
+@media (max-width: 1100px) {
+  .services-grid .service-card:nth-child(5),
+  .services-grid .service-card:last-child {
+    grid-column: auto;
+    width: auto;
+    justify-self: stretch;
+  }
+}
+
+/* =========================================
+   CARD TOP: number + NEW badge
+========================================= */
+
+.service-card-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-badge {
+  padding: 3px 8px;
+
+  border-radius: 20px;
+
+  background: #7255df;
+  color: #ffffff;
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+}

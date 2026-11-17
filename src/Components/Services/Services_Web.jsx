@@ -1,15 +1,18 @@
 // import React, { useEffect, useRef, useState } from "react";
+// import { Link } from "react-router-dom";
 // import {
 //   Code2,
 //   Search,
 //   MessageCircle,
 //   Wrench,
 //   SearchCheck,
+//   Box,
 //   Check,
 //   ArrowUpRight,
 // } from "lucide-react";
 
 // import "./Services.css";
+// import "./Services_Extra.css";
 
 // export const Services_Web = () => {
 //   const servicesRef = useRef(null);
@@ -40,12 +43,30 @@
 //     };
 //   }, []);
 
-//   // All five services
+//   // Contact section par smooth scroll (jin cards ka alag page nahi hai)
+//   const scrollToContact = (event) => {
+//     const contactSection = document.getElementById("contact");
+
+//     if (contactSection) {
+//       event.preventDefault();
+
+//       contactSection.scrollIntoView({
+//         behavior: "smooth",
+//         block: "start",
+//       });
+
+//       window.history.replaceState(null, "", "#contact");
+//     }
+//   };
+
+//   // All six services
+//   // `path` wale card par Learn More us page par jayega, baaki contact par
 //   const services = [
 //     {
 //       number: "01",
 //       icon: <Code2 size={23} strokeWidth={1.8} />,
 //       title: "Website Development",
+//       path: "/website-development",
 //       description:
 //         "Get a modern, responsive and professional website designed specifically for your business.",
 //       features: [
@@ -62,6 +83,7 @@
 //       number: "02",
 //       icon: <Search size={23} strokeWidth={1.8} />,
 //       title: "Google Business Setup",
+//       path: "/google-business-setup",
 //       description:
 //         "Make it easier for customers to discover your business on Google Search and Google Maps.",
 //       features: [
@@ -78,6 +100,7 @@
 //       number: "03",
 //       icon: <MessageCircle size={23} strokeWidth={1.8} />,
 //       title: "WhatsApp Integration",
+//       path: "/whatsapp-integration",
 //       description:
 //         "Let your customers contact your business instantly through WhatsApp.",
 //       features: [
@@ -94,6 +117,7 @@
 //       number: "04",
 //       icon: <Wrench size={23} strokeWidth={1.8} />,
 //       title: "Website Maintenance",
+//       path: "/website-maintenance",
 //       description:
 //         "Keep your website secure, updated and running smoothly with ongoing maintenance.",
 //       features: [
@@ -110,6 +134,7 @@
 //       number: "05",
 //       icon: <SearchCheck size={23} strokeWidth={1.8} />,
 //       title: "Basic SEO",
+//       path: "/basic-seo",
 //       description:
 //         "Improve your website's search visibility and help local customers find your business online.",
 //       features: [
@@ -121,6 +146,25 @@
 //         "Mobile SEO",
 //         "Keyword Optimization",
 //         "Sitemap & Robots.txt",
+//       ],
+//     },
+
+//     {
+//       number: "06",
+//       icon: <Box size={23} strokeWidth={1.8} />,
+//       title: "3D Website Development",
+//       badge: "NEW",
+//       // path abhi nahi hai, isliye Learn More contact section par jayega.
+//       // Alag page banane par yahan path daal dena, jaise: path: "/3d-website-development",
+//       description:
+//         "Stand out with an immersive website that uses 3D visuals, depth and smooth scroll animations.",
+//       features: [
+//         "3D Hero Section",
+//         "Interactive 3D Elements",
+//         "Scroll-based Animations",
+//         "Mouse & Touch Interaction",
+//         "Mobile Optimized 3D",
+//         "Performance Optimization",
 //       ],
 //     },
 //   ];
@@ -174,9 +218,17 @@
 //             >
 //               {/* CARD TOP */}
 //               <div className="service-card-top">
-//                 <span className="service-number">
-//                   {service.number}
-//                 </span>
+//                 <div className="service-card-left">
+//                   <span className="service-number">
+//                     {service.number}
+//                   </span>
+
+//                   {service.badge && (
+//                     <span className="service-badge">
+//                       {service.badge}
+//                     </span>
+//                   )}
+//                 </div>
 
 //                 <div className="service-icon">
 //                   {service.icon}
@@ -203,33 +255,25 @@
 //                 </div>
 //               </div>
 
-//               {/* LEARN MORE: ALL CARDS GO TO CONTACT */}
-//               <a
-//                 href="#contact"
-//                 className="service-learn-more"
-//                 onClick={(event) => {
-//                   const contactSection =
-//                     document.getElementById("contact");
-
-//                   if (contactSection) {
-//                     event.preventDefault();
-
-//                     contactSection.scrollIntoView({
-//                       behavior: "smooth",
-//                       block: "start",
-//                     });
-
-//                     window.history.replaceState(
-//                       null,
-//                       "",
-//                       "#contact"
-//                     );
-//                   }
-//                 }}
-//               >
-//                 <span>Learn More</span>
-//                 <ArrowUpRight size={15} />
-//               </a>
+//               {/* LEARN MORE */}
+//               {service.path ? (
+//                 <Link
+//                   to={service.path}
+//                   className="service-learn-more"
+//                 >
+//                   <span>Learn More</span>
+//                   <ArrowUpRight size={15} />
+//                 </Link>
+//               ) : (
+//                 <a
+//                   href="#contact"
+//                   className="service-learn-more"
+//                   onClick={scrollToContact}
+//                 >
+//                   <span>Learn More</span>
+//                   <ArrowUpRight size={15} />
+//                 </a>
+//               )}
 //             </div>
 //           ))}
 //         </div>
@@ -242,7 +286,6 @@
 
 
 
-
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -251,11 +294,13 @@ import {
   MessageCircle,
   Wrench,
   SearchCheck,
+  Box,
   Check,
   ArrowUpRight,
 } from "lucide-react";
 
 import "./Services.css";
+import "./Services_Extra.css";
 
 export const Services_Web = () => {
   const servicesRef = useRef(null);
@@ -302,7 +347,7 @@ export const Services_Web = () => {
     }
   };
 
-  // All five services
+  // All six services
   // `path` wale card par Learn More us page par jayega, baaki contact par
   const services = [
     {
@@ -391,18 +436,33 @@ export const Services_Web = () => {
         "Sitemap & Robots.txt",
       ],
     },
+
+    {
+      number: "06",
+      icon: <Box size={23} strokeWidth={1.8} />,
+      title: "3D Website Development",
+      badge: "NEW",
+      path: "/3d-website-development", // <-- yeh line add hui hai
+      description:
+        "Stand out with an immersive website that uses 3D visuals, depth and smooth scroll animations.",
+      features: [
+        "3D Hero Section",
+        "Interactive 3D Elements",
+        "Scroll-based Animations",
+        "Mouse & Touch Interaction",
+        "Mobile Optimized 3D",
+        "Performance Optimization",
+      ],
+    },
   ];
 
   return (
     <section
-      className={`services-section ${
-        visible ? "services-visible" : ""
-      }`}
+      className={`services-section ${visible ? "services-visible" : ""}`}
       id="services"
       ref={servicesRef}
     >
       <div className="services-container">
-
         {/* TOP LABEL */}
         <div className="services-label">
           <span>02</span>
@@ -435,20 +495,20 @@ export const Services_Web = () => {
               className="service-card"
               key={service.number}
               style={{
-                transitionDelay: visible
-                  ? `${index * 100}ms`
-                  : "0ms",
+                transitionDelay: visible ? `${index * 100}ms` : "0ms",
               }}
             >
               {/* CARD TOP */}
               <div className="service-card-top">
-                <span className="service-number">
-                  {service.number}
-                </span>
+                <div className="service-card-left">
+                  <span className="service-number">{service.number}</span>
 
-                <div className="service-icon">
-                  {service.icon}
+                  {service.badge && (
+                    <span className="service-badge">{service.badge}</span>
+                  )}
                 </div>
+
+                <div className="service-icon">{service.icon}</div>
               </div>
 
               {/* CARD CONTENT */}
@@ -460,10 +520,7 @@ export const Services_Web = () => {
                 {/* FEATURES */}
                 <div className="service-features">
                   {service.features.map((feature) => (
-                    <div
-                      className="service-feature"
-                      key={feature}
-                    >
+                    <div className="service-feature" key={feature}>
                       <Check size={15} strokeWidth={2} />
                       <span>{feature}</span>
                     </div>
@@ -473,10 +530,7 @@ export const Services_Web = () => {
 
               {/* LEARN MORE */}
               {service.path ? (
-                <Link
-                  to={service.path}
-                  className="service-learn-more"
-                >
+                <Link to={service.path} className="service-learn-more">
                   <span>Learn More</span>
                   <ArrowUpRight size={15} />
                 </Link>
@@ -493,8 +547,8 @@ export const Services_Web = () => {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
 };
+

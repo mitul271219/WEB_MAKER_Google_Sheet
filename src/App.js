@@ -59,6 +59,7 @@ import { Google_Business_Setup } from "./Components/Google_Business_Setup/Google
 import { WhatsApp_Integration } from "./Components/WhatsApp_Integration/WhatsApp_Integration";
 import { Website_Maintenance } from "./Components/Website_Maintenance/Website_Maintenance";
 import { Basic_SEO } from "./Components/Basic_SEO/Basic_SEO";
+import { ThreeD_Website_Development } from "./Components/3D_Website_Development/ThreeD_Website_Development";
 
 // Naya page hamesha top se khule, aur "/#contact" jaisa link sahi section par scroll kare
 function ScrollManager() {
@@ -101,6 +102,7 @@ function App() {
           element={<Website_Maintenance />}
         />
         <Route path="/basic-seo" element={<Basic_SEO />} />
+        <Route path="/3d-website-development" element={<ThreeD_Website_Development />} />
       </Routes>
     </>
   );
