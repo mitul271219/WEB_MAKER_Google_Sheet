@@ -1,4 +1,3 @@
-
 /* =========================================
    SELECTED WORK: 3D / 4D LAYER
    Selected_Work.css ke BAAD import karo (Selected_Work_Web.jsx me already hai).
@@ -599,5 +598,65 @@
   .work-bg-grid {
     transform: none;
     background-position: 0 0;
+  }
+}
+/* ==================================================
+   REAL SITE SCREENSHOT (live demo card)
+   Banner chhota card me poora nahi aata, isliye scroll ke saath
+   dheere dheere left se right pan hota hai (--cp se).
+================================================== */
+.mock-shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.mock-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: calc(62% - var(--cp, 0) * 26%) 50%;
+  transform: scale(1.04);
+  transition: object-position 0.35s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+}
+
+.work-card:hover .mock-shot img {
+  transform: scale(1.1);
+}
+
+.work-concept.work-live {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.work-concept.work-live::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #4ade80;
+  vertical-align: middle;
+  animation: wk-live-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes wk-live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mock-shot img,
+  .work-card:hover .mock-shot img {
+    transform: none;
+    transition: none;
+  }
+  .work-concept.work-live::before {
+    animation: none;
   }
 }
