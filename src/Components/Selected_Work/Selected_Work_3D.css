@@ -278,6 +278,10 @@
   --mock-accent: #3f7d56;
 }
 
+.work-card.salon {
+  --mock-accent: #c9a46a;
+}
+
 .mock-viewport {
   position: relative;
   height: calc(100% - 30px);
@@ -294,6 +298,10 @@
 
 .studio .mock-viewport {
   background: linear-gradient(160deg, #e2efe2, #f6fbf6);
+}
+
+.salon .mock-viewport {
+  background: #11100f;
 }
 
 .mock-page {
@@ -600,6 +608,7 @@
     background-position: 0 0;
   }
 }
+
 /* ==================================================
    REAL SITE SCREENSHOT (live demo card)
    Banner chhota card me poora nahi aata, isliye scroll ke saath
@@ -659,4 +668,15 @@
   .work-concept.work-live::before {
     animation: none;
   }
+}
+
+/* ==================================================
+   CUTS_UNISEX (salon) THEME: black + gold
+================================================== */
+.work-section .work-card.salon .work-preview {
+  background: #c9a46a;
+}
+
+.work-card.salon .browser-cta {
+  color: #171717;
 }
